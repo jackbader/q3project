@@ -81,7 +81,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
 
             </input>
           </div>
-          <input id="email-btn" type="submit" value="Sign up" className="btn btn-primary"></input>
+          <input id="email-btn" type="submit" value="Sign in" className="btn btn-primary"></input>
         </form>
         <div className={errorMessageClasses()}>
           Please check your email and password.
@@ -227,7 +227,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
   }
 
   function loginButton() {
-    if (token != null) {
+    if (state.isLoggedIn == true) {
       console.log('logout')
       logoutUser()
     } else {
