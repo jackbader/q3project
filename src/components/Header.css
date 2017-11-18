@@ -1,0 +1,62 @@
+.main-name-div {
+  text-align: center;
+}
+
+.name-input-div-left {
+  float: left;
+  width: 180px;
+  margin-left: 0px;
+  display: inline-block;
+}
+
+.name-input-div-right {
+  float: right;
+  width: 180px;
+  margin-left: 0px;
+  display: inline-block;
+}
+
+.name-label {
+  color: white !important;
+  float: left;
+}
+
+.name-input {
+  height: 35px !important;
+  background-color: white !important;
+  padding-left: 10px !important;
+}
+
+.email-label {
+  color: white !important;
+  float: left;
+}
+
+.email-input {
+  height: 35px !important;
+  background-color: white !important;
+  padding-left: 10px !important;
+  width: 365px !important;
+}
+
+.password-label {
+  color: white !important;
+  float: left;
+}
+
+.password-input {
+  height: 35px !important;
+  background-color: white !important;
+  padding-left: 10px !important;
+  width: 365px !important;
+}
+
+.errorMessage {
+  color: #df4a32;
+  font-size: 11px;
+  padding-top: 15px;
+}
+
+.u-hidden {
+  display: none;
+}

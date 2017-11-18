@@ -1,0 +1,55 @@
+.genaslistpage {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.genaslistpage h5 {
+  color: black;
+}
+
+.genaslistpage p {
+  color: black !important;
+}
+
+
+
+.genaslistpage .input-field label {
+  color: black !important;
+  font-size: 8em
+}
+
+.genas-input {
+  color: black !important;
+  font-size: 8em
+}
+
+.genaslistpage .input-field label {
+  color: black !important;
+  font-size: 8em
+}
+
+.selectgym {
+  color: black !important;
+  font-size: 8em
+}
+.genaslistpage .DayPicker-Day {
+  color: black !important;
+}
+.genaslistpage p {
+  color: black !important;
+}
+.genaslistpage .input-field label:not(.label-icon).active {
+  font-size: 1em
+}
+
+#submitlist {
+  background-color: white;
+  color: black;
+}
+.genaslistpage .center {
+  margin: 0 auto;
+}
+
+.DayPicker-Caption {
+  color: black !important;
+}
