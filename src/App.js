@@ -23,7 +23,8 @@ class App extends Component {
         memberships: [],
         modal: {
           name: 'Welcome to Flex'
-        }
+        },
+        loading: true
     }
   }
 
@@ -44,14 +45,15 @@ class App extends Component {
     })
     const tokenJson = await tokenResponse.json()
 
-    console.log(tokenJson)
-
     this.setState({
       ...this.state,
       memberships: membershipsJson,
       gyms: gymsJson,
-      isLoggedIn: tokenJson
+      isLoggedIn: tokenJson,
+      loading: false
     })
+
+    console.log('component did mount')
   }
 
   changeModalState = (string) => {
@@ -161,10 +163,22 @@ class App extends Component {
     $('#loginmodal').modal('close')
   }
 
+
   render() {
+
+
+    const { loading } = this.state;
+    console.log(this.state)
+
+    if(loading) { // if your app get render immediately, remove this block
+      return null; // render null when app is not ready
+    }
+
     return (
 
       <div>
+
+
         <Header logoutUser={this.logoutUser} isLoggedIn={this.isLoggedIn} state={this.state} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} userLogin={this.userLogin}/>
         <Router history={history}>
           <Switch>

@@ -16,7 +16,7 @@ const List = ({modal}) => {
   <form>
     <Row>
       <div className="genas-input">
-      	<Input class="selectgym" type='select' label="Select your gym">
+      	<Input className="selectgym" type='select' label="Select your gym">
       		<option value='1'>Colorado Athletic Club</option>
       		<option value='2'>24 Hour Fitness</option>
       		<option value='3'>Boulder One Fitness</option>

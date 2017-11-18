@@ -34,7 +34,6 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
   }
 
   let token = getCookie('token');
-  console.log(token)
 
   function pickModalHtml() {
     if (modal.name === "Welcome to Flex") {
@@ -96,7 +95,6 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
   }
 
   function SignUpButtons() {
-    console.log('test')
     return (
       <div>
         <div className="button-container">
@@ -187,7 +185,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
   }
 
   const loginNavItem = () => {
-    if (token != null) {
+    if (state.isLoggedIn == true) {
       return "Log out"
     } else {
       return "Log in"
@@ -195,7 +193,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
   }
 
   const pickInOrOut = () => {
-    if (token != null) {
+    if (state.isLoggedIn == true) {
       return (
         <span>
         <NavItem className="u-hidden" onClick={(e) => {
