@@ -61,7 +61,6 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
 
 
   function SignInForm() {
-        console.log('test 2')
     return (
       <div>
         <form onSubmit={getToken}>
