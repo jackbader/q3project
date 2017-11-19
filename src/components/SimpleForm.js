@@ -5,7 +5,7 @@ import './SimpleForm.css';
 class SimpleForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { address: '' }
+    this.state = { address: props.where }
     this.onChange = (address) => this.setState({ address })
   }
 
@@ -26,12 +26,7 @@ class SimpleForm extends React.Component {
     }
 
     return (
-      <form onSubmit={this.handleFormSubmit}>
         <PlacesAutocomplete inputProps={inputProps} />
-        <label htmlFor="where_input" className="where_label">
-          Where
-        </label>
-      </form>
     )
   }
 }

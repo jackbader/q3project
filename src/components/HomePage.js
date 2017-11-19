@@ -2,10 +2,21 @@ import React from 'react'
 import {Button, Row, Input} from 'react-materialize'
 import './HomePage.css';
 import SimpleForm from '../components/SimpleForm'
+import history from './History'
 
-const Index = ({modal, changeModalState, createUser}) => {
+const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
 
   // var autocomplete = new google.maps.places.Autocomplete(input);
+
+  const submitSearch = (e) => {
+    e.preventDefault()
+    console.log(e.target.date.value)
+    console.log(e.target.where_input.value)
+    const date = e.target.date.value
+    const where = e.target.where_input.value
+    updateSearchState(date, where)
+    history.push('/search')
+  }
 
   return (
     <div className="home">
@@ -28,15 +39,17 @@ const Index = ({modal, changeModalState, createUser}) => {
                   <h5>GYM MEMBERSHIP SHARE</h5>
                 </div>
                 <div className="jacks-inputs">
-                  <Row>
+                  <form onSubmit={submitSearch}>
+                    <Row>
                       <SimpleForm />
-                  </Row>
-                  <Row>
-                    <Input label="When" name='on' type='date' onChange={function(e, value) {}} />
-                  </Row>
-                </div>
-                <div>
-                  <a href="search"><Button className="search-button" waves='light'>Search</Button></a>
+                    </Row>
+                    <Row>
+                      <Input label="When" id="date" name='on' type='date' onChange={function(e, value) {}} />
+                    </Row>
+                    <Row>
+                      <a href="search"><Button className="search-button" waves='light'>Search</Button></a>
+                    </Row>
+                  </form>
                 </div>
               </div>
             </div>
