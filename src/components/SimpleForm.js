@@ -1,7 +1,6 @@
 import React from 'react'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
-import {Button, Icon, Navbar, NavItem, Row, Input, Autocomplete} from 'react-materialize'
-
+import './SimpleForm.css';
 
 class SimpleForm extends React.Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class SimpleForm extends React.Component {
     return (
       <form onSubmit={this.handleFormSubmit}>
         <PlacesAutocomplete inputProps={inputProps} />
-        <label forHTML="where_input" className="where_label">
+        <label htmlFor="where_input" className="where_label">
           Where
         </label>
       </form>

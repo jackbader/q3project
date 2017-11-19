@@ -30,9 +30,9 @@
 
 .search .when-where {
   display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    width: 940px;
+  flex-direction: row;
+  align-items: stretch;
+  width: 940px;
 }
 
 .search .where_label {
