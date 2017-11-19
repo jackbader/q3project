@@ -180,17 +180,20 @@ class App extends Component {
     $('#loginmodal').modal('close')
   }
 
-  sendNewMembership = () => {
+  sendNewMembership = async() => {
     const selectGyms = this.state.gym
     const selectDays = this.state.selectedDays
-    const response = await fetch(`http://localhost:3000/token`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      }
-    })
+    console.log(selectGyms)
+    console.log(selectDays)
+    // const response = await fetch(`http://localhost:3000/token`, {
+    //   method: 'POST',
+    //   credentials: 'include',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json',
+    //   },
+    //   body: JSON.stringify({})
+    // })
   }
 
 
