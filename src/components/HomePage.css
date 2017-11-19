@@ -65,14 +65,22 @@ nav .brand-logo {
 }
 
 .home input[type=text] {
+  height: auto;
   border-bottom: 1px solid white !important;
   border-bottom: 1px solid white !important;
   box-shadow: 0 1px 0 0 white !important;
   color: white !important;
+  margin: 0 0 6px 0 !important;
 }
 
 .home .input-field label {
   color: white !important;
+  font-size: .8rem !important;
+  top: -1.8rem;
+}
+
+.home .input-field {
+  margin-top: 0px !important;
 }
 
 .home .btn:focus {
@@ -83,14 +91,18 @@ nav .brand-logo {
   color: white !important;
 }
 
+.home .input-field label:not(.label-icon).active {
+  top: 0rem !important;
+}
+
 .home .jacks-header {
   color: white;
 }
 
 .home .search-button {
+  margin-top: -20px !important;
   color: black;
   background-color: white;
-  margin-top: 10px;
 }
 
 .home .search-button:hover {

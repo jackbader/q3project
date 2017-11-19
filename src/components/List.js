@@ -1,48 +1,55 @@
 import React from 'react'
-import {Button, Icon, Navbar, NavItem, Row, Input, Autocomplete} from 'react-materialize'
+import {Button, Row, Input} from 'react-materialize'
 import './List.css';
-import Header from './Header'
 import DatePicker from './DatePicker'
 
-const List = ({sendSelectedDays, sendGym, sendNewMembership}) => {
-  let gym;
-  const getValue = (e) => {
-    console.log(e.target.value)
-    sendGym(e.target.value)
+const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMembership}) => {
+
+  const Gym = ({gym}) => {
+    return (
+      <option value={gym.id}>
+        {gym.name}
+      </option>
+    )
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    let gym_id = e.target.gym.value
+    let user = JSON.parse(localStorage.user)
+    let user_id = user.id
+    let object = {
+      gym_id: gym_id,
+      user_id: user_id
+    }
+    createNewMembership(object)
   }
 
   return (
-<div>
-
-  <div className="genaslistpage">
-<div className="center">
-
-    <h5>LIST YOUR MEMBERSHIP RENTAL HERE</h5>
-  </div>
-  <form>
-    <Row>
-      <div className="genas-input">
-      	<Input onChange={getValue} className="selectgym" type='select' label="Select your gym">
-      		<option>Colorado Athletic Club</option>
-      		<option>24 Hour Fitness</option>
-      		<option>Boulder One Fitness</option>
-      	</Input>
+    <div>
+      <div className="genaslistpage">
+        <div className="center">
+          <h5>LIST YOUR MEMBERSHIP RENTAL HERE</h5>
+        </div>
+        <form onSubmit={submitForm} >
+          <Row>
+            <div className="genas-input">
+            	<Input id="gym" className="selectgym" type='select' label="Select your gym">
+                { gyms.map((gym, i) => <Gym key={ i } gym={ gym } />) }
+            	</Input>
+            </div>
+          </Row>
+          <div>
+            <p className="center">Select the days you want to list</p>
+            <DatePicker id="datePicker" sendSelectedDays={sendSelectedDays}/>
+          </div>
+          <div>
+      		   <input type="submit" value="Send" className="btn btn-primary"></input>
+          </div>
+        </form>
       </div>
-    </Row>
-<div>
-  <p className="center">Select the days you want to list</p>
-  <DatePicker
-    sendSelectedDays={sendSelectedDays}
-  />
-
-</div>
-<div>
-		<Button onClick={sendNewMembership} id="submitlist" waves='light' node='a' > Submit </Button>
-</div>
-</form>
-</div>
-</div>
-)
+    </div>
+  )
 }
 
 export default List

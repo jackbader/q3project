@@ -5,7 +5,7 @@ const Checkout =() =>{
 
     <div>
 
-    <a href="#" class="stripe-connect"><span>Connect with Stripe</span></a>
+    <a href="/" class="stripe-connect"><span>Connect with Stripe</span></a>
 
     </div>
   )

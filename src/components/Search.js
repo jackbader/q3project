@@ -1,23 +1,37 @@
 import React from 'react'
-import Header from './Header'
-import {Button, Icon, Navbar, NavItem, Row, Input, Autocomplete} from 'react-materialize'
+import {Input} from 'react-materialize'
 import SimpleForm from './SimpleForm'
+import Membership from './Membership'
 import './Search.css';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
+import JacksDatePicker from './JacksDatePicker'
+declare var $: any;
 
-const Search = ({modal, createUser}) => {
+const Search = ({modal, createUser, memberships, gyms, search}) => {
+  console.log(memberships)
 
   return (
     <div className="search">
-      <div className="search-bar">
-        <div className="search-inputs">
-          <div className="when-where">
-            <SimpleForm />
-            <Input label="When" name='on' type='date' onChange={function(e, value) {}} />
+      <div>
+        <div className="search-bar">
+          <div className="search-inputs">
+            <div className="when-where">
+              <SimpleForm where={search.where}/>
+              <JacksDatePicker date={search.date}/>
+              {/* <Input value={search.date} defaultValue="kjdslf" label="When" name='on' type='date' onChange={function(e, value) {}} /> */}
+            </div>
           </div>
         </div>
       </div>
+      <div>
+        <h1>Memberships:</h1>
+        <div>
+          { memberships.map((membership, i) => <Membership key={ i } gyms={gyms} membership={ membership } />) }
+        </div>
+      </div>
     </div>
-
   )
 
 }

@@ -1,0 +1,20 @@
+.home .where_label {
+  color: white;
+  float: left;
+  margin-bottom: 8px;
+  margin-left: 10px;
+}
+
+.home #where_input {
+  padding: 0 !important;
+  margin-left: 10px;
+  width: 360px !important;
+}
+
+.home .date-picker .input-field label {
+
+}
+
+.home .date-picker .input-field {
+  margin-top: 0px !important;
+}

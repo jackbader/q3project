@@ -1,24 +1,35 @@
 import React from 'react'
-import {Button, Icon, Navbar, NavItem, Row, Input, Autocomplete} from 'react-materialize'
+import {Button, Row, Input} from 'react-materialize'
 import './HomePage.css';
-import Header from '../components/Header'
+import SimpleForm from '../components/SimpleForm'
+import history from './History'
 
-const Index = ({modal, changeModalState, createUser}) => {
+const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
 
   // var autocomplete = new google.maps.places.Autocomplete(input);
+
+  const submitSearch = (e) => {
+    e.preventDefault()
+    console.log(e.target.date.value)
+    console.log(e.target.where_input.value)
+    const date = e.target.date.value
+    const where = e.target.where_input.value
+    updateSearchState(date, where)
+    history.push('/search')
+  }
 
   return (
     <div className="home">
 
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Proxima Nova"></link>
-{/* AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M */}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places&callback=initMap"
-        async defer></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places"></script>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places&callback=initMap"
+              async defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places"></script>
 
         <div className="homepage-background-container">
           <div className="homepage-img-container">
-            <img className="background-img" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59c18454e3df28dbafd180ad/1505854552351/"></img>
+            <img alt="" className="background-img" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59c18454e3df28dbafd180ad/1505854552351/"></img>
           </div>
           <div>
             <div className="search-container">
@@ -28,15 +39,17 @@ const Index = ({modal, changeModalState, createUser}) => {
                   <h5>GYM MEMBERSHIP SHARE</h5>
                 </div>
                 <div className="jacks-inputs">
-                  <Row>
-                  	<Autocomplete title='Where' data={{}}/>
-                  </Row>
-                  <Row>
-                    <Input label="When" name='on' type='date' onChange={function(e, value) {}} />
-                  </Row>
-                </div>
-                <div>
-                  <a href="search"><Button className="search-button" waves='light'>Search</Button></a>
+                  <form onSubmit={submitSearch}>
+                    <Row>
+                      <SimpleForm />
+                    </Row>
+                    <Row>
+                      <Input label="When" id="date" name='on' type='date' onChange={function(e, value) {}} />
+                    </Row>
+                    <Row>
+                      <a href="search"><Button className="search-button" waves='light'>Search</Button></a>
+                    </Row>
+                  </form>
                 </div>
               </div>
             </div>

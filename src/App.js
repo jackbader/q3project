@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Browser, Route, Link, Router, Switch } from 'react-router-dom'
-import logo from './logo.svg';
+import {Route, Router, Switch } from 'react-router-dom'
 // import $ from 'jquery'
-import {Materialize, Button, Icon, Navbar, NavItem, Row, Input, Toast} from 'react-materialize'
+import {Toast} from 'react-materialize'
 
 import HomePage from './components/HomePage'
 import Checkout from './components/Checkout'
@@ -11,6 +10,7 @@ import history from './components/History'
 import ErrorPage from './components/ErrorPage'
 import Search from './components/Search'
 import Header from './components/Header'
+import MembershipPage from './components/MembershipPage'
 
 declare var $: any;
 
@@ -21,10 +21,12 @@ class App extends Component {
     this.state = {
         gyms: [],
         memberships: [],
+        user: {},
         modal: {
           name: 'Welcome to Flex'
         },
-        loading: true
+        loading: true,
+        search: {}
     }
   }
 
@@ -52,8 +54,6 @@ class App extends Component {
       isLoggedIn: tokenJson,
       loading: false
     })
-
-    console.log('component did mount')
   }
 
   changeModalState = (string) => {
@@ -69,7 +69,7 @@ class App extends Component {
 
   createUser = async(info) => {
 
-    const response = await fetch(`http://localhost:3000/users`, {
+    await fetch(`http://localhost:3000/users`, {
       method: 'POST',
       body: JSON.stringify(info),
       headers: {
@@ -78,20 +78,10 @@ class App extends Component {
       }
     })
 
-    // console.log(response)
-  }
-
-  test = () => {
-    console.log('hey')
-    return (
-      <Toast toast="here you go!">
-        Toast
-      </Toast>
-    )
   }
 
   userLogin = async(info) => {
-    const response = await fetch(`http://localhost:3000/token`, {
+    let response = await fetch(`http://localhost:3000/token`, {
       method: 'POST',
       body: JSON.stringify(info),
       credentials: 'include',
@@ -100,17 +90,16 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    try {
-        const userInfo = await response.json()
-        console.log('state change')
-        this.setState({
-          ...this.state,
-          isLoggedIn: true
-        })
-        $('#loginmodal').modal('close')
-        $('#signupmodal').modal('close')
-    } catch(error) {
-      console.log('state change')
+    if (response.status != 400) {
+      const userInfo = await response.json()
+      this.setState({
+        ...this.state,
+        isLoggedIn: true
+      })
+      localStorage.setItem("user", JSON.stringify(userInfo));
+      $('#loginmodal').modal('close')
+      $('#signupmodal').modal('close')
+    } else {
       this.setState({
         ...this.state,
         modal: {
@@ -165,7 +154,7 @@ class App extends Component {
   }
 
   logoutUser = async() => {
-    const response = await fetch(`http://localhost:3000/token`, {
+    await fetch(`http://localhost:3000/token`, {
       method: 'delete',
       credentials: 'include',
       headers: {
@@ -191,9 +180,70 @@ class App extends Component {
     //   headers: {
     //     'Content-Type': 'application/json',
     //     'Accept': 'application/json',
+<<<<<<< HEAD
     //   },
     //   body: JSON.stringify({})
     // })
+=======
+    //   }
+    // })
+  }
+
+  createNewMembership = async(data) => {
+    let response = await fetch(`http://localhost:3000/memberships`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    const newMembership = await response.json()
+    const items = this.state.memberships
+    const clone = [
+      ...items,
+      newMembership,
+    ]
+    console.log(clone)
+    this.setState({
+      ...this.state,
+      memberships: clone
+    })
+    history.push(`/membership/${newMembership.id}`)
+
+    const membership_id = newMembership.id
+    const dates_available = this.state.selectedDays
+  }
+
+  updateSearchState = (date, where) => {
+    this.setState({
+      ...this.state,
+      search: {
+        date: date,
+        where: where
+      }
+    })
+  }
+
+  deleteMembership = async(membership) => {
+    console.log(membership)
+    let response = await fetch(`http://localhost:3000/memberships/${membership.id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    const newMembership = await response.json()
+    const items = this.state.memberships
+    const clone = items.filter(item => item !== membership)
+    this.setState({
+      ...this.state,
+      memberships: clone
+    })
+>>>>>>> c61543ede4f4e81175031d603a1015dcf420eae2
   }
 
 
@@ -201,7 +251,6 @@ class App extends Component {
 
 
     const { loading } = this.state;
-    console.log(this.state)
 
     if(loading) { // if your app get render immediately, remove this block
       return null; // render null when app is not ready
@@ -209,17 +258,20 @@ class App extends Component {
 
     return (
 
+
       <div>
 
+        {console.log('re-rendering')}
 
         <Header logoutUser={this.logoutUser} isLoggedIn={this.isLoggedIn} state={this.state} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} userLogin={this.userLogin}/>
         <Router history={history}>
           <Switch>
+            <Route path="/membership/:id" render= {({match}) => <MembershipPage deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
             <Route path="/payment" render= {() => <Checkout modal={this.state.modal}/>} />
-            <Route path="/list" render= {() => <List sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
-            <Route path="/search" render= {() => <Search modal={this.state.modal} />} />
+            <Route path="/list" render= {() => <List createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
+            <Route path="/search" render= {() => <Search search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />
-            <HomePage modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser}/>
+            <HomePage updateSearchState={this.updateSearchState} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser}/>
           </Switch>
         </Router>
 
