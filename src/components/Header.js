@@ -227,7 +227,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
   }
 
   function loginButton() {
-    if (token != null) {
+    if (state.isLoggedIn == true) {
       console.log('logout')
       logoutUser()
     } else {

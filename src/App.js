@@ -64,6 +64,7 @@ class App extends Component {
         name: string
       }
     })
+    console.log(this.state)
   }
 
   createUser = async(info) => {
@@ -120,6 +121,22 @@ class App extends Component {
     }
   }
 
+  sendSelectedDays=(selectedDays)=>{
+    this.setState({
+      ...this.state,
+      selectedDays: selectedDays
+    })
+    console.log(selectedDays)
+  }
+
+  sendGym = (gym) => {
+    this.setState({
+      ...this.state,
+      gym: gym
+    })
+    console.log(gym)
+  }
+
   isLoggedIn = async() => {
     const response = await fetch(`http://localhost:3000/token`, {
       method: 'GET',
@@ -163,6 +180,19 @@ class App extends Component {
     $('#loginmodal').modal('close')
   }
 
+  sendNewMembership = () => {
+    const selectGyms = this.state.gym
+    const selectDays = this.state.selectedDays
+    const response = await fetch(`http://localhost:3000/token`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+  }
+
 
   render() {
 
@@ -183,7 +213,7 @@ class App extends Component {
         <Router history={history}>
           <Switch>
             <Route path="/payment" render= {() => <Checkout modal={this.state.modal}/>} />
-            <Route path="/list" render= {() => <List modal={this.state.modal}/>} />
+            <Route path="/list" render= {() => <List sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
             <Route path="/search" render= {() => <Search modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />
             <HomePage modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser}/>

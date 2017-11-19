@@ -4,7 +4,13 @@ import './List.css';
 import Header from './Header'
 import DatePicker from './DatePicker'
 
-const List = ({modal}) => {
+const List = ({sendSelectedDays, sendGym, sendNewMembership}) => {
+  let gym;
+  const getValue = (e) => {
+    console.log(e.target.value)
+    sendGym(e.target.value)
+  }
+
   return (
 <div>
 
@@ -16,20 +22,22 @@ const List = ({modal}) => {
   <form>
     <Row>
       <div className="genas-input">
-      	<Input className="selectgym" type='select' label="Select your gym">
-      		<option value='1'>Colorado Athletic Club</option>
-      		<option value='2'>24 Hour Fitness</option>
-      		<option value='3'>Boulder One Fitness</option>
+      	<Input onChange={getValue} className="selectgym" type='select' label="Select your gym">
+      		<option>Colorado Athletic Club</option>
+      		<option>24 Hour Fitness</option>
+      		<option>Boulder One Fitness</option>
       	</Input>
       </div>
     </Row>
 <div>
   <p className="center">Select the days you want to list</p>
-  <DatePicker />
+  <DatePicker
+    sendSelectedDays={sendSelectedDays}
+  />
 
 </div>
 <div>
-		<Button id="submitlist" waves='light' node='a' href='http://www.google.com'> Submit </Button>
+		<Button onClick={sendNewMembership} id="submitlist" waves='light' node='a' > Submit </Button>
 </div>
 </form>
 </div>
