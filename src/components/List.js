@@ -5,6 +5,8 @@ import DatePicker from './DatePicker'
 
 const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMembership}) => {
 
+  console.log('asdfasdfasdf '+JSON.stringify(gyms))
+
   const Gym = ({gym}) => {
     return (
       <option value={gym.id}>
@@ -16,12 +18,15 @@ const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMemb
   const submitForm = (e) => {
     e.preventDefault()
     let gym_id = e.target.gym.value
+
     let user = JSON.parse(localStorage.user)
     let user_id = user.id
+
     let object = {
-      gym_id: gym_id,
+      gym_id: parseInt(gym_id),
       user_id: user_id
     }
+
     createNewMembership(object)
   }
 

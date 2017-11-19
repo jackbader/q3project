@@ -47,12 +47,25 @@ class App extends Component {
     })
     const tokenJson = await tokenResponse.json()
 
+    let datesResponse = await fetch(`http://localhost:3000/dates`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+
+    const datesJson = await datesResponse.json()
+    console.log(datesJson)
+
     this.setState({
       ...this.state,
       memberships: membershipsJson,
       gyms: gymsJson,
       isLoggedIn: tokenJson,
-      loading: false
+      loading: false,
+      dates: JSON.stringify(datesJson)
     })
   }
 
@@ -68,7 +81,7 @@ class App extends Component {
   }
 
   createUser = async(info) => {
-
+    console.log(info)
     await fetch(`http://localhost:3000/users`, {
       method: 'POST',
       body: JSON.stringify(info),
@@ -77,7 +90,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-
+    console.log(info)
   }
 
   userLogin = async(info) => {
@@ -174,22 +187,11 @@ class App extends Component {
     const selectDays = this.state.selectedDays
     console.log(selectGyms)
     console.log(selectDays)
-    // const response = await fetch(`http://localhost:3000/token`, {
-    //   method: 'POST',
-    //   credentials: 'include',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json',
-<<<<<<< HEAD
-    //   },
-    //   body: JSON.stringify({})
-    // })
-=======
-    //   }
-    // })
+
   }
 
   createNewMembership = async(data) => {
+    console.log(data)
     let response = await fetch(`http://localhost:3000/memberships`, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -199,7 +201,9 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
+    console.log(response)
     const newMembership = await response.json()
+    console.log(newMembership)
     const items = this.state.memberships
     const clone = [
       ...items,
@@ -213,8 +217,59 @@ class App extends Component {
     history.push(`/membership/${newMembership.id}`)
 
     const membership_id = newMembership.id
-    const dates_available = this.state.selectedDays
+    const date_available = this.state.selectedDays
+    let newArr = []
+    for(var i in date_available) {
+      newArr.push({
+        date_available: date_available[i],
+        membership_id: membership_id,
+        booked: false
+      })
+    }
+    let dateResponse = await fetch(`http://localhost:3000/dates`, {
+      method: 'POST',
+      body: JSON.stringify({arr: newArr}),
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+
+    let datesResponse = await fetch(`http://localhost:3000/dates`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+
+    const datesJson = await datesResponse.json()
+
+    this.setState({
+      ...this.state,
+      dates: datesJson
+    })
+
+    console.log(this.state)
+
+    // const datejson = await dateResponse.json()
+    //   console.log(datejson)
+    //   const newDateInfo = [...this.state.dates]
+    //   for(i=0; i<newDateInfo.length; i++) {
+    //     newDateInfo.push(datejson[i])
+    //   }
+    //   console.log(newDateInfo)
+    //   this.setState({
+    //     ...this.state,
+    //       dates: JSON.stringify(newDateInfo)
+    //   })
   }
+
+
+
+
 
   updateSearchState = (date, where) => {
     this.setState({
@@ -243,7 +298,6 @@ class App extends Component {
       ...this.state,
       memberships: clone
     })
->>>>>>> c61543ede4f4e81175031d603a1015dcf420eae2
   }
 
 
@@ -269,7 +323,7 @@ class App extends Component {
             <Route path="/membership/:id" render= {({match}) => <MembershipPage deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
             <Route path="/payment" render= {() => <Checkout modal={this.state.modal}/>} />
             <Route path="/list" render= {() => <List createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
-            <Route path="/search" render= {() => <Search search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
+            <Route path="/search" render= {() => <Search dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />
             <HomePage updateSearchState={this.updateSearchState} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser}/>
           </Switch>

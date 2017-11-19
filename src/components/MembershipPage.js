@@ -24,6 +24,7 @@ const MembershipPage = ({match, memberships, gyms, deleteMembership}) => {
 
   const boolean = (loggedInUser_id === user_id)
 
+
   const preDeleteMemberShip = (e) => {
     history.push('/search')
     deleteMembership(membership[0])
