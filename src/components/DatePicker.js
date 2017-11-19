@@ -1,5 +1,6 @@
 import React from 'react';
 import DayPicker, { DateUtils } from 'react-day-picker';
+import List from './List';
 import 'react-day-picker/lib/style.css';
 
 export default class Example extends React.Component {
@@ -19,8 +20,11 @@ export default class Example extends React.Component {
       selectedDays.splice(selectedIndex, 1);
     } else {
       selectedDays.push(day);
+      const selectDay = day;
+      console.log(selectDay)
     }
     this.setState({ selectedDays });
+    this.props.sendSelectedDays(this.state.selectedDays)
   }
   render() {
     return (
@@ -29,6 +33,9 @@ export default class Example extends React.Component {
           selectedDays={this.state.selectedDays}
           onDayClick={this.handleDayClick}
         />
+        {/* <List
+          // selectedDays={this.state.selectedDays}
+        /> */}
       </div>
     );
   }
