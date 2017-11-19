@@ -1,6 +1,7 @@
 import React from 'react'
 import {Navbar, NavItem, Modal} from 'react-materialize'
 import './Header.css';
+import history from './History'
 // import $ from 'jquery';
 declare var $: any;
 
@@ -193,13 +194,23 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
     }
   }
 
+  const pushSearch = (e) => {
+    e.preventDefault()
+    history.push('/search')
+  }
+
+  const pushList = (e) => {
+    e.preventDefault()
+    history.push('/list')
+  }
+
   return (
 
     <div className="header">
 
       <Navbar brand='FLEX' right>
-        <NavItem href='list'>List</NavItem>
-        <NavItem href='search'>Rent</NavItem>
+        <NavItem onClick={pushList}>List</NavItem>
+        <NavItem onClick={pushSearch}>Rent</NavItem>
         <NavItem href='components.html'>About</NavItem>
 
         {pickInOrOut()}
