@@ -1,6 +1,5 @@
 import React from 'react'
-import Header from './Header'
-import {Button, Icon, Navbar, NavItem, Row, Input, Autocomplete} from 'react-materialize'
+import {Input} from 'react-materialize'
 import SimpleForm from './SimpleForm'
 import './Search.css';
 

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Browser, Route, Link, Router, Switch } from 'react-router-dom'
-import logo from './logo.svg';
+import {Route, Router, Switch } from 'react-router-dom'
 // import $ from 'jquery'
-import {Materialize, Button, Icon, Navbar, NavItem, Row, Input, Toast} from 'react-materialize'
+import {Toast} from 'react-materialize'
 
 import HomePage from './components/HomePage'
 import Checkout from './components/Checkout'
@@ -52,8 +51,6 @@ class App extends Component {
       isLoggedIn: tokenJson,
       loading: false
     })
-
-    console.log('component did mount')
   }
 
   changeModalState = (string) => {
@@ -69,7 +66,7 @@ class App extends Component {
 
   createUser = async(info) => {
 
-    const response = await fetch(`http://localhost:3000/users`, {
+    await fetch(`http://localhost:3000/users`, {
       method: 'POST',
       body: JSON.stringify(info),
       headers: {
@@ -78,7 +75,6 @@ class App extends Component {
       }
     })
 
-    // console.log(response)
   }
 
   test = () => {
@@ -91,7 +87,7 @@ class App extends Component {
   }
 
   userLogin = async(info) => {
-    const response = await fetch(`http://localhost:3000/token`, {
+    await fetch(`http://localhost:3000/token`, {
       method: 'POST',
       body: JSON.stringify(info),
       credentials: 'include',
@@ -101,8 +97,6 @@ class App extends Component {
       }
     })
     try {
-        const userInfo = await response.json()
-        console.log('state change')
         this.setState({
           ...this.state,
           isLoggedIn: true
@@ -165,7 +159,7 @@ class App extends Component {
   }
 
   logoutUser = async() => {
-    const response = await fetch(`http://localhost:3000/token`, {
+    await fetch(`http://localhost:3000/token`, {
       method: 'delete',
       credentials: 'include',
       headers: {
@@ -198,7 +192,6 @@ class App extends Component {
 
 
     const { loading } = this.state;
-    console.log(this.state)
 
     if(loading) { // if your app get render immediately, remove this block
       return null; // render null when app is not ready

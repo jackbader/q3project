@@ -1,40 +1,10 @@
 import React from 'react'
-import {Button, Icon, Navbar, NavItem, Row, Input, Autocomplete, Modal} from 'react-materialize'
+import {Navbar, NavItem, Modal} from 'react-materialize'
 import './Header.css';
 // import $ from 'jquery';
 declare var $: any;
 
 const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createUser, userLogin}) => {
-
-  // if (isLoggedIn() == true) {
-  //   console.log('user is logged in')
-  //   // $('#loginmodal').modal('close')
-  // }
-  // isLoggedIn()
-
-  function getCookie(name) {
-      var dc = document.cookie;
-      var prefix = name + "=";
-      var begin = dc.indexOf("; " + prefix);
-      if (begin == -1) {
-          begin = dc.indexOf(prefix);
-          if (begin != 0) return null;
-      }
-      else
-      {
-          begin += 2;
-          var end = document.cookie.indexOf(";", begin);
-          if (end == -1) {
-          end = dc.length;
-          }
-      }
-      // because unescape has been deprecated, replaced with decodeURI
-      //return unescape(dc.substring(begin + prefix.length, end));
-      return decodeURI(dc.substring(begin + prefix.length, end));
-  }
-
-  let token = getCookie('token');
-
   function pickModalHtml() {
     if (modal.name === "Welcome to Flex") {
       return <SignUpButtons />
@@ -61,7 +31,6 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
 
 
   function SignInForm() {
-        console.log('test 2')
     return (
       <div>
         <form onSubmit={getToken}>
@@ -81,7 +50,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
 
             </input>
           </div>
-          <input id="email-btn" type="submit" value="Sign up" className="btn btn-primary"></input>
+          <input id="email-btn" type="submit" value="Sign in" className="btn btn-primary"></input>
         </form>
         <div className={errorMessageClasses()}>
           Please check your email and password.
@@ -98,8 +67,8 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
     return (
       <div>
         <div className="button-container">
-          <a id="facebook-btn" ><img className="facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1000px-F_icon_reversed.svg.png"></img>Sign up with Facebook</a>
-          <a id="google-btn" ><img className="google-logo" src="https://cdn.worldvectorlogo.com/logos/google-icon.svg"></img>Sign up with Google</a>
+          <a id="facebook-btn" ><img alt="" className="facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1000px-F_icon_reversed.svg.png"></img>Sign up with Facebook</a>
+          <a id="google-btn" ><img alt="" className="google-logo" src="https://cdn.worldvectorlogo.com/logos/google-icon.svg"></img>Sign up with Google</a>
         </div>
         <p className="signup-or-p">or</p>
         <a id="email-btn" onClick={() => preChangeModalState("Let's get Started")} >Sign up with email</a>
@@ -173,19 +142,8 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
     )
   }
 
-  const navSignUpClasses = () => {
-    console.log('navClasses ' + state.isLoggedIn)
-    if (state.isLoggedIn == true) {
-      console.log('yayo')
-      $('#loginmodal').modal('close')
-      return "u-hidden"
-    } else {
-      return ""
-    }
-  }
-
   const loginNavItem = () => {
-    if (state.isLoggedIn == true) {
+    if (state.isLoggedIn === true) {
       return "Log out"
     } else {
       return "Log in"
@@ -193,7 +151,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
   }
 
   const pickInOrOut = () => {
-    if (state.isLoggedIn == true) {
+    if (state.isLoggedIn === true) {
       return (
         <span>
         <NavItem className="u-hidden" onClick={(e) => {

@@ -1,7 +1,6 @@
 import React from 'react'
-import {Button, Icon, Navbar, NavItem, Row, Input, Autocomplete} from 'react-materialize'
+import {Button, Row, Input} from 'react-materialize'
 import './List.css';
-import Header from './Header'
 import DatePicker from './DatePicker'
 
 const List = ({sendSelectedDays, sendGym, sendNewMembership}) => {
