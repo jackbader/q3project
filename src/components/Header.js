@@ -133,7 +133,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
             <label className="password-label">
               Choose a password
             </label>
-            <input name="password" className="password-input">
+            <input type="password" name="password" className="password-input">
 
             </input>
           </div>
@@ -186,7 +186,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
   }
 
   function loginButton() {
-    if (state.isLoggedIn == true) {
+    if (state.isLoggedIn === true) {
       console.log('logout')
       logoutUser()
     } else {

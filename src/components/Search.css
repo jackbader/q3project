@@ -33,5 +33,6 @@
 }
 
 .search .card {
+  background-color: white !important;
   width: 200px;
 }

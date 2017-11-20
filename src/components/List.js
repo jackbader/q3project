@@ -1,11 +1,9 @@
 import React from 'react'
-import {Button, Row, Input} from 'react-materialize'
+import {Row, Input} from 'react-materialize'
 import './List.css';
 import DatePicker from './DatePicker'
 
 const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMembership}) => {
-
-  console.log('asdfasdfasdf '+JSON.stringify(gyms))
 
   const Gym = ({gym}) => {
     return (
@@ -23,7 +21,7 @@ const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMemb
     let user_id = user.id
 
     let object = {
-      gym_id: parseInt(gym_id),
+      gym_id: parseInt(gym_id, 10),
       user_id: user_id
     }
 
