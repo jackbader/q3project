@@ -30,13 +30,14 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const gymsResponse = await fetch(`${process.env.REACT_APP_API_URL}/gyms`)
+    const gymsResponse = await fetch(`${process.env.REACT_APP_API_URL}gyms`)
+    console.log(gymsResponse)
     const gymsJson = await gymsResponse.json()
 
-    const membershipsResponse = await fetch(`${process.env.REACT_APP_API_URL}/memberships`)
+    const membershipsResponse = await fetch(`${process.env.REACT_APP_API_URL}memberships`)
     const membershipsJson = await membershipsResponse.json()
 
-    const tokenResponse = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
+    const tokenResponse = await fetch(`${process.env.REACT_APP_API_URL}token`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -46,7 +47,7 @@ class App extends Component {
     })
     const tokenJson = await tokenResponse.json()
 
-    let datesResponse = await fetch(`${process.env.REACT_APP_API_URL}/dates`, {
+    let datesResponse = await fetch(`${process.env.REACT_APP_API_URL}dates`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -77,7 +78,7 @@ class App extends Component {
   }
 
   createUser = async(info) => {
-    await fetch(`${process.env.REACT_APP_API_URL}/users`, {
+    await fetch(`${process.env.REACT_APP_API_URL}users`, {
       method: 'POST',
       body: JSON.stringify(info),
       headers: {
@@ -89,7 +90,8 @@ class App extends Component {
   }
 
   userLogin = async(info) => {
-    let response = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
+    console.log(info)
+    let response = await fetch(`${process.env.REACT_APP_API_URL}token`, {
       method: 'POST',
       body: JSON.stringify(info),
       credentials: 'include',
@@ -98,6 +100,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
+    console.log(response)
     if (response.status !== 400) {
       const userInfo = await response.json()
       this.setState({
@@ -135,7 +138,7 @@ class App extends Component {
   }
 
   isLoggedIn = async() => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}token`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -162,7 +165,7 @@ class App extends Component {
   }
 
   logoutUser = async() => {
-    await fetch(`${process.env.REACT_APP_API_URL}/token`, {
+    await fetch(`${process.env.REACT_APP_API_URL}token`, {
       method: 'delete',
       credentials: 'include',
       headers: {
@@ -187,7 +190,7 @@ class App extends Component {
 
   createNewMembership = async(data) => {
     console.log(data)
-    let response = await fetch(`${process.env.REACT_APP_API_URL}/memberships`, {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}memberships`, {
       method: 'POST',
       body: JSON.stringify(data),
       credentials: 'include',
@@ -222,7 +225,7 @@ class App extends Component {
       })
     }
 
-    let dateResponse = await fetch(`${process.env.REACT_APP_API_URL}/dates`, {
+    let dateResponse = await fetch(`${process.env.REACT_APP_API_URL}dates`, {
       method: 'POST',
       body: JSON.stringify({arr: newArr}),
       credentials: 'include',
@@ -316,7 +319,7 @@ class App extends Component {
   }
 
   deleteMembership = async(membership) => {
-    await fetch(`${process.env.REACT_APP_API_URL}/memberships/${membership.id}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}memberships/${membership.id}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: {
