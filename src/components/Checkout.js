@@ -1,11 +1,15 @@
 import React from 'react'
+import Payment from './Payment'
 
-const Checkout =() =>{
+const Checkout = ({match, history}) =>{
+
+  console.log(match.params.id)
+
   return(
 
     <div>
 
-    <a href="/" class="stripe-connect"><span>Connect with Stripe</span></a>
+      <Payment match={match} history={history}/>
 
     </div>
   )

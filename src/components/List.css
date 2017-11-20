@@ -1,6 +1,8 @@
 .genaslistpage {
   margin: 0 auto;
   text-align: center;
+  background-image: url("https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59d29e3912abd95b114165e0/1506977910596/Equinox.jpg");
+  height: 500px;
 }
 
 .genaslistpage h5 {
@@ -11,8 +13,6 @@
   color: black !important;
 }
 
-
-
 .genaslistpage .input-field label {
   color: black !important;
   font-size: 8em
@@ -22,6 +22,32 @@
   color: black !important;
   font-size: 8em
 }
+
+.floatoverbackground {
+  color: white !important;
+  color: #fff;
+  display: center;
+  font-family: sans-serif;
+  font-size: 65px !important;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.039604em;
+  /*font-size: 2.1rem;*/
+  padding-top: 15%;
+}
+
+.floatoverbackgroundlower {
+  color: white !important;
+  display: center;
+  font-family: sans-serif;
+  font-size: 65px !important;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.039604em;
+  /*font-size: 2.1rem;*/
+  padding: 0;
+}
+
 
 .genaslistpage .input-field label {
   color: black !important;
@@ -43,6 +69,7 @@
 }
 
 #submitlist {
+  display: center;
   background-color: white;
   color: black;
 }
