@@ -1,6 +1,5 @@
 import React from 'react';
 import DayPicker, { DateUtils } from 'react-day-picker';
-import List from './List';
 import 'react-day-picker/lib/style.css';
 
 export default class Example extends React.Component {

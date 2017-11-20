@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Route, Router, Switch } from 'react-router-dom'
 // import $ from 'jquery'
-import {Toast} from 'react-materialize'
 
 import HomePage from './components/HomePage'
 import Checkout from './components/Checkout'
@@ -57,7 +56,6 @@ class App extends Component {
     })
 
     const datesJson = await datesResponse.json()
-    console.log(datesJson)
 
     this.setState({
       ...this.state,
@@ -70,18 +68,15 @@ class App extends Component {
   }
 
   changeModalState = (string) => {
-    console.log('state change')
     this.setState({
       ...this.state,
       modal: {
         name: string
       }
     })
-    console.log(this.state)
   }
 
   createUser = async(info) => {
-    console.log(info)
     await fetch(`http://localhost:3000/users`, {
       method: 'POST',
       body: JSON.stringify(info),
@@ -90,7 +85,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    console.log(info)
+    $('#signupmodal').modal('close')
   }
 
   userLogin = async(info) => {
@@ -103,7 +98,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    if (response.status != 400) {
+    if (response.status !== 400) {
       const userInfo = await response.json()
       this.setState({
         ...this.state,
@@ -308,8 +303,7 @@ class App extends Component {
   }
 
   deleteMembership = async(membership) => {
-    console.log(membership)
-    let response = await fetch(`http://localhost:3000/memberships/${membership.id}`, {
+    await fetch(`http://localhost:3000/memberships/${membership.id}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: {
@@ -317,7 +311,6 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    const newMembership = await response.json()
     const items = this.state.memberships
     const clone = items.filter(item => item !== membership)
     this.setState({
@@ -340,8 +333,6 @@ class App extends Component {
 
 
       <div>
-
-        {console.log('re-rendering')}
 
         <Header logoutUser={this.logoutUser} isLoggedIn={this.isLoggedIn} state={this.state} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} userLogin={this.userLogin}/>
         <Router history={history}>

@@ -10,11 +10,15 @@ import 'react-datepicker/dist/react-datepicker.css';
 class JacksDatePicker extends React.Component {
   constructor (props) {
     super(props)
-    console.log(props.date)
-    console.log(moment(props.date))
-    this.state = {
-      startDate: moment(props.date)
-    };
+    if (typeof props.date != 'undefined') {
+      this.state = {
+        startDate: moment(props.date)
+      };
+    } else {
+      this.state = {
+        startDate: moment()
+      };
+    }
     this.handleChange = this.handleChange.bind(this);
   }
 
