@@ -19,10 +19,12 @@ class JacksDatePicker extends React.Component {
         startDate: moment()
       };
     }
+
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(date) {
+    this.props.updateSearchStateDate(date)
     this.setState({
       startDate: date
     });

@@ -221,6 +221,7 @@ class App extends Component {
         booked: false
       })
     }
+    console.log(newArr)
     let dateResponse = await fetch(`http://localhost:3000/dates`, {
       method: 'POST',
       body: JSON.stringify({arr: newArr}),
@@ -230,16 +231,17 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-
+    console.log(dateResponse)
     let newDates = await dateResponse.json()
     const oldDates = this.state.dates
     let copy = oldDates.slice(0)
+    console.log(copy)
     let copy2 = JSON.parse(copy)
     newDates.map((newDate, i)=> copy2.push(newDate))
     // console.log(copy2)
     this.setState({
       ...this.state,
-        dates: copy2
+        dates: JSON.stringify(copy2)
     })
     console.log(this.state.dates)
 
@@ -302,6 +304,17 @@ class App extends Component {
     })
   }
 
+  updateSearchStateDate = (date) => {
+    console.log(date)
+    this.setState({
+      ...this.state,
+      search: {
+        ...this.state.search,
+        date: date
+      }
+    })
+  }
+
   deleteMembership = async(membership) => {
     await fetch(`http://localhost:3000/memberships/${membership.id}`, {
       method: 'DELETE',
@@ -351,7 +364,7 @@ class App extends Component {
             <Route path="/membership/:id" render= {({match}) => <MembershipPage deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
             <Route path="/checkout/:id" render= {({match}) => <Checkout match={match} history={history}/>} />
             <Route path="/list" render= {() => <List createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
-            <Route path="/search" render= {() => <Search dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
+            <Route path="/search" render= {() => <Search updateSearchStateDate={this.updateSearchStateDate} dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />
             <HomePage updateSearchState={this.updateSearchState} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser}/>
           </Switch>
