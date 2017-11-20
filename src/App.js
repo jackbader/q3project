@@ -30,13 +30,13 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const gymsResponse = await fetch(`http://localhost:3000/gyms`)
+    const gymsResponse = await fetch(`${process.env.REACT_APP_API_URL}/gyms`)
     const gymsJson = await gymsResponse.json()
 
-    const membershipsResponse = await fetch(`http://localhost:3000/memberships`)
+    const membershipsResponse = await fetch(`${process.env.REACT_APP_API_URL}/memberships`)
     const membershipsJson = await membershipsResponse.json()
 
-    const tokenResponse = await fetch(`http://localhost:3000/token`, {
+    const tokenResponse = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -46,7 +46,7 @@ class App extends Component {
     })
     const tokenJson = await tokenResponse.json()
 
-    let datesResponse = await fetch(`http://localhost:3000/dates`, {
+    let datesResponse = await fetch(`${process.env.REACT_APP_API_URL}/dates`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -77,7 +77,7 @@ class App extends Component {
   }
 
   createUser = async(info) => {
-    await fetch(`http://localhost:3000/users`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: 'POST',
       body: JSON.stringify(info),
       headers: {
@@ -89,7 +89,7 @@ class App extends Component {
   }
 
   userLogin = async(info) => {
-    let response = await fetch(`http://localhost:3000/token`, {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
       method: 'POST',
       body: JSON.stringify(info),
       credentials: 'include',
@@ -135,7 +135,7 @@ class App extends Component {
   }
 
   isLoggedIn = async() => {
-    const response = await fetch(`http://localhost:3000/token`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -162,7 +162,7 @@ class App extends Component {
   }
 
   logoutUser = async() => {
-    await fetch(`http://localhost:3000/token`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/token`, {
       method: 'delete',
       credentials: 'include',
       headers: {
@@ -187,7 +187,7 @@ class App extends Component {
 
   createNewMembership = async(data) => {
     console.log(data)
-    let response = await fetch(`http://localhost:3000/memberships`, {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/memberships`, {
       method: 'POST',
       body: JSON.stringify(data),
       credentials: 'include',
@@ -221,7 +221,7 @@ class App extends Component {
         booked: false
       })
     }
-    let dateResponse = await fetch(`http://localhost:3000/dates`, {
+    let dateResponse = await fetch(`${process.env.REACT_APP_API_URL}/dates`, {
       method: 'POST',
       body: JSON.stringify({arr: newArr}),
       credentials: 'include',
@@ -303,7 +303,7 @@ class App extends Component {
   }
 
   deleteMembership = async(membership) => {
-    await fetch(`http://localhost:3000/memberships/${membership.id}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/memberships/${membership.id}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: {
