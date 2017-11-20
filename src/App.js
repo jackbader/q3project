@@ -319,6 +319,17 @@ class App extends Component {
     })
   }
 
+  hitFacebookRoute = async() => {
+    // window.location.replace("http://localhost:3000/auth/facebook");
+    // let response = await fetch(`http://localhost:3000/auth/facebook`, {
+    //   method: 'GET',
+    //   mode: 'no-cors'
+    // })
+    // console.log(response)
+    // //const itemsJson = await response.json()
+    // // console.log(itemsJson)
+  }
+
 
   render() {
 
@@ -334,11 +345,11 @@ class App extends Component {
 
       <div>
 
-        <Header logoutUser={this.logoutUser} isLoggedIn={this.isLoggedIn} state={this.state} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} userLogin={this.userLogin}/>
+        <Header hitFacebookRoute={this.hitFacebookRoute} logoutUser={this.logoutUser} isLoggedIn={this.isLoggedIn} state={this.state} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} userLogin={this.userLogin}/>
         <Router history={history}>
           <Switch>
             <Route path="/membership/:id" render= {({match}) => <MembershipPage deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
-            <Route path="/payment" render= {() => <Checkout modal={this.state.modal}/>} />
+            <Route path="/checkout/:id" render= {({match}) => <Checkout match={match} history={history}/>} />
             <Route path="/list" render= {() => <List createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
             <Route path="/search" render= {() => <Search dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />
