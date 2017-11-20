@@ -9,9 +9,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import JacksDatePicker from './JacksDatePicker'
 declare var $: any;
 
-const Search = ({modal, createUser, memberships, gyms, search}) => {
+const Search = ({modal, createUser, memberships, gyms, search, dates}) => {
   console.log(memberships)
-
+console.log(dates)
   return (
     <div className="search">
       <div>
@@ -28,7 +28,7 @@ const Search = ({modal, createUser, memberships, gyms, search}) => {
       <div>
         <h1>Memberships:</h1>
         <div>
-          { memberships.map((membership, i) => <Membership key={ i } gyms={gyms} membership={ membership } />) }
+          { memberships.map((membership, i) => <Membership dates={dates} key={ i } gyms={gyms} membership={ membership } />) }
         </div>
       </div>
     </div>
