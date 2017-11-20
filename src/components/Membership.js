@@ -19,9 +19,9 @@ const Membership = ({membership, gyms, key, dates}) => {
   }
 
 // [{}, {}]
-dates = JSON.parse(dates)
-let test2 = dates.filter(date => date.membership_id === membership.id);
-console.log(test2)
+// dates = JSON.parse(dates)
+// let test2 = dates.filter(date => date.membership_id === membership.id);
+// console.log(test2)
 
 
 

@@ -236,23 +236,49 @@ class App extends Component {
       }
     })
 
-    let datesResponse = await fetch(`http://localhost:3000/dates`, {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      }
-    })
-
-    const datesJson = await datesResponse.json()
-
+    let newDates = await dateResponse.json()
+    const oldDates = this.state.dates
+    let copy = oldDates.slice(0)
+    let copy2 = JSON.parse(copy)
+    newDates.map((newDate, i)=> copy2.push(newDate))
+    // console.log(copy2)
     this.setState({
       ...this.state,
-      dates: datesJson
+        dates: copy2
     })
+    console.log(this.state.dates)
 
-    console.log(this.state)
+
+    // const newDatesJson = newDates.json
+    // console.log("LOOK HERE "+newDatesJson)
+    //
+    // for (let i = 0; i<newDates.length; i++) {
+    //   console.log(newDates[i])
+    //   // clone2.push(newDates[i])
+    //
+    // }
+    // this.setState({
+    //   ...this.state
+    //   dates:
+    // })
+
+    // let datesResponse = await fetch(`http://localhost:3000/dates`, {
+    //   method: 'GET',
+    //   credentials: 'include',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json',
+    //   }
+    // })
+
+    // const datesJson = await datesResponse.json()
+
+    // this.setState({
+    //   ...this.state,
+    //   dates: datesJson
+    // })
+    //
+    // console.log(this.state)
 
     // const datejson = await dateResponse.json()
     //   console.log(datejson)
