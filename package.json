@@ -26,5 +26,5 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy":"https://flex-routes.herokuapp.com/"
+  "proxy":"https://flex-routes.herokuapp.com"
 }
