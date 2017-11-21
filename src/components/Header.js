@@ -72,8 +72,10 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
     return (
       <div>
         <div className="button-container">
+
           <a href="https://flex-routes.herokuapp.com/auth/facebook" id="facebook-btn" ><img alt="" className="facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1000px-F_icon_reversed.svg.png"></img>Sign up with Facebook</a>
           <a id="google-btn" ><img alt="" className="google-logo" src="https://cdn.worldvectorlogo.com/logos/google-icon.svg"></img>Sign up with Google</a>
+
         </div>
         <p className="signup-or-p">or</p>
         <a id="email-btn" onClick={() => preChangeModalState("Let's get Started")} >Sign up with email</a>
@@ -141,7 +143,7 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
 
             </input>
           </div>
-          <input type="submit" value="Send" className="btn btn-primary"></input>
+          <input type="submit" value="Submit" className="btn btn-primary"></input>
         </form>
       </div>
     )
