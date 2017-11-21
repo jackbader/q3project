@@ -61,7 +61,44 @@ nav .brand-logo {
 
 .home .row {
   display: inline-block;
-  margin-bottom: -10px;
+}
+
+.home .elementContainer {
+  padding: 0 10px 0 15px;
+  width: 140px;
+  font-size: 18px;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  flex-basis: 25%;
+  height: 40px;
+  border-bottom: none;
+}
+
+.home .search-button-container {
+  margin-top: 40px;
+}
+
+.home ul {
+  margin-bottom: 0px;
+}
+
+.home form {
+  flex-direction: row;
+  padding: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  margin-bottom: 35px;
+}
+
+.home .elementContainer-where {
+  width: 300px
+}
+
+.home .search-container-opacity {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .home input[type=text] {
@@ -69,8 +106,13 @@ nav .brand-logo {
   border-bottom: 1px solid white !important;
   border-bottom: 1px solid white !important;
   box-shadow: 0 1px 0 0 white !important;
-  color: white !important;
   margin: 0 0 6px 0 !important;
+  font-size: 18px !important;
+}
+
+.home label {
+  font-size: 18px;
+  color: white !important;
 }
 
 .home .input-field label {
@@ -89,7 +131,7 @@ nav .brand-logo {
 
 .home .jacks-inputs {
   color: white !important;
-  padding-top: 7%;
+  margin-top: 50px;
 }
 
 .home .input-field label:not(.label-icon).active {
@@ -101,9 +143,8 @@ nav .brand-logo {
 }
 
 .home .search-button {
-  margin-top: -20px !important;
-  color: white;
-  background-color: light-teal;
+  color: black;
+  background-color: white;
 }
 
 .home .search-button:hover {

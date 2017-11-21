@@ -12,8 +12,6 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
 
   const submitSearch = (e) => {
     e.preventDefault()
-    console.log(e.target.date.value)
-    console.log(e.target.where_input.value)
     let date = e.target.date.value
     if (date === "") {
       date = moment()
@@ -38,22 +36,28 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
           </div>
           <div>
             <div className="search-container">
-              <div>
-                <h1 className="homepage-header">FLEX</h1>
+              <div className="search-container-opacity">
+                <h1 className="homepage-header" >FLEX</h1>
                 <div className="jacks-header">
                   {/* <h5>GYM MEMBERSHIP SHARE</h5> */}
                 </div>
                 <div className="jacks-inputs">
                   <form onSubmit={submitSearch}>
-                    <Row>
-                      <SimpleForm />
-                    </Row>
-                    <Row>
-                      <Input label="When" id="date" name='on' type='date' onChange={function(e, value) {}} />
-                    </Row>
-                    <Row>
-                      <a href="search"><Button className="search-button" waves='light'>Search</Button></a>
-                    </Row>
+                    <ul>
+                      <div className="elementContainer elementContainer-where">
+                          <label for="on" >Where</label>
+                          <SimpleForm />
+                          <label for="on" >When</label>
+                          <Input id="date" name='on' type='date' onChange={function(e, value) {}} />
+
+                      </div>
+                      <div className="elementContainer">
+
+                      </div>
+                      <div className="search-button-container">
+                          <a href="search"><Button className="search-button" waves='light'>Search</Button></a>
+                      </div>
+                    </ul>
                   </form>
                   <br></br>
                   <div className="summary">
