@@ -5,7 +5,7 @@ import history from './History'
 // import $ from 'jquery';
 declare var $: any;
 
-const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createUser, userLogin, hitFacebookRoute}) => {
+const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, createUser, userLogin, hitFacebookRoute}) => {
   function pickModalHtml() {
     if (modal.name === "Welcome to Flex") {
       return <SignUpButtons />
@@ -194,6 +194,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
       console.log('logout')
       logoutUser()
     } else {
+      $('#loginmodal').modal('open')
       console.log('login')
     }
   }
@@ -208,6 +209,13 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
     history.push('/list')
   }
 
+  const goToProfilePage = (e) => {
+    e.preventDefault()
+    let loggedInUser = JSON.parse(localStorage.user)
+    let user_id = loggedInUser.id
+    history.push(`/profile/${user_id}`)
+  }
+
   return (
 
     <div className="header">
@@ -215,7 +223,6 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
       <Navbar brand='FLEX' right>
         <NavItem onClick={pushList}>List</NavItem>
         <NavItem onClick={pushSearch}>Rent</NavItem>
-        <NavItem href='components.html'>About</NavItem>
 
         {pickInOrOut()}
 
@@ -223,13 +230,15 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
           loginButton()
           preChangeModalState("Welcome back")
           e.preventDefault()
-      		$('#loginmodal').modal('open')
       	}}>{loginNavItem()}</NavItem>
       	<Modal
       		id='loginmodal'
       		header={modal.name}>
       		{pickModalHtml()}
       	</Modal>
+
+        {state.isLoggedIn === true ? <NavItem onClick={goToProfilePage}>Profile</NavItem> : null}
+
 
       </Navbar>
 

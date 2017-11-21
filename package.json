@@ -5,16 +5,19 @@
   "dependencies": {
     "jquery": "^2.1.1",
     "moment": "^2.19.2",
+    "prop-types": "^15.6.0",
     "react": "^15.5.0",
     "react-cookie": "^2.1.1",
     "react-datepicker": "^0.61.0",
     "react-day-picker": "^6.2.1",
     "react-dom": "^15.5.0",
     "react-materialize": "^1.0.18",
+    "react-notify-toast": "^0.4.0",
     "react-places-autocomplete": "^5.4.3",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "react-stripe-checkout": "^2.6.3",
+    "react-toastify": "^2.2.1",
     "redux": "^3.7.2"
   },
   "scripts": {
@@ -26,5 +29,5 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy":"https://flex-routes.herokuapp.com"
+  "proxy": "https://flex-routes.herokuapp.com"
 }
