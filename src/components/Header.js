@@ -148,15 +148,17 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
   }
 
   const loginNavItem = () => {
-    if (state.isLoggedIn === true) {
+    if (typeof localStorage.user !== 'undefined') {
+      console.log('local storage isnt undefined returning log out')
       return "Log out"
     } else {
+      console.log('local storage is undefined return log in')
       return "Log in"
     }
   }
 
   const pickInOrOut = () => {
-    if (state.isLoggedIn === true) {
+    if (typeof localStorage.user !== 'undefined') {
       return (
         <span>
         <NavItem className="u-hidden" onClick={(e) => {
@@ -190,7 +192,7 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
   }
 
   function loginButton() {
-    if (state.isLoggedIn === true) {
+    if (typeof localStorage.user !== 'undefined') {
       console.log('logout')
       logoutUser()
     } else {
@@ -237,7 +239,7 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
       		{pickModalHtml()}
       	</Modal>
 
-        {state.isLoggedIn === true ? <NavItem onClick={goToProfilePage}>Profile</NavItem> : null}
+        {typeof localStorage.user !== 'undefined' ? <NavItem onClick={goToProfilePage}>Profile</NavItem> : null}
 
 
       </Navbar>

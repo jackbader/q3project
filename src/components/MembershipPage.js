@@ -15,8 +15,16 @@ const MembershipPage = ({match, memberships, gyms, deleteMembership}) => {
   console.log(gym)
   const imageUrl = gym[0].image
 
-  let loggedInUser = JSON.parse(localStorage.user)
-  let loggedInUser_id = loggedInUser.id
+  let loggedInUser
+  let loggedInUser_id
+  if (typeof localStorage.user === "undefined") {
+    loggedInUser = '1000'
+    loggedInUser_id = 1000
+  } else {
+    loggedInUser = JSON.parse(localStorage.user)
+    loggedInUser_id = loggedInUser.id
+  }
+
 
   const preDeleteMemberShip = (e) => {
     history.push('/search')
