@@ -39,9 +39,9 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
           <div>
             <div className="search-container">
               <div>
-                <h1 className="homepage-header" >FLEX</h1>
+                <h1 className="homepage-header">FLEX</h1>
                 <div className="jacks-header">
-                  <h5>GYM MEMBERSHIP SHARE</h5>
+                  {/* <h5>GYM MEMBERSHIP SHARE</h5> */}
                 </div>
                 <div className="jacks-inputs">
                   <form onSubmit={submitSearch}>
@@ -55,19 +55,54 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
                       <a href="search"><Button className="search-button" waves='light'>Search</Button></a>
                     </Row>
                   </form>
+                  <br></br>
+                  <div className="summary">
+                    <h5>Rent short-term gym memberships.</h5>
+                    <h5>Work out wherever you want.</h5>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="homepage-about">
-          <h4>
-            Rent short-term gym memberships.
-          </h4>
-          <h4>
-            Work out wherever you want.
-          </h4>
+          <p>
+          </p>
         </div>
+          <div className="container">
+            <div className="section">
+
+              <div className="row">
+                <div className="col s12 m4">
+                  <div className="image-block">
+                    <h2 className="center light-blue-text"><i className="material-icons">flash_on</i></h2>
+                    <h5 className="center">Rent</h5>
+                    <img src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59dca061cd0f68a14032d8c2/1507631269928/Screen+Shot+2017-10-04+at+8.35.08+PM.png"></img>
+                    <p className="light">Search available short-term memberships for the location and dates you want. Filter by price, amenities, reviews, and more to find the perfect workout space.</p>
+                  </div>
+                </div>
+
+                <div className="col s12 m4">
+                  <div className="image-block">
+                    <h2 className="center light-blue-text"><i className="material-icons">group</i></h2>
+                    <h5 className="center">List</h5>
+
+                    <p className="light">List an existing gym membership in the marketplace and the dates it's available for others to use.</p>
+                  </div>
+                </div>
+
+                <div className="col s12 m4">
+                  <div className="image-block">
+                    <h2 className="center light-blue-text"><i className="material-icons">settings</i></h2>
+                    <h5 className="center">Enjoy</h5>
+
+                    <p className="light">Renters get instant access to gyms across the country at the best prices, no long-term contracts required. Listers turn unused memberships into money-makers.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br></br>
+          </div>
     </div>
   )
 }
