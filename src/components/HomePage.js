@@ -40,6 +40,10 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
                 <h1 className="homepage-header" >FLEX</h1>
                 <div className="jacks-header">
                 </div>
+                <div className="summary">
+                  <h6>Rent short-term gym memberships.</h6>
+                  <h6>Work out wherever you want.</h6>
+                </div>
                 <div className="jacks-inputs">
                   <form onSubmit={submitSearch}>
                     <ul>
@@ -48,7 +52,6 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
                           <SimpleForm />
                           <label for="on" >When</label>
                           <Input id="date" name='on' type='date' onChange={function(e, value) {}} />
-
                       </div>
                       <div className="elementContainer">
 
@@ -58,11 +61,6 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
                       </div>
                     </ul>
                   </form>
-                  <br></br>
-                  <div className="summary">
-                    <h5>Rent short-term gym memberships.</h5>
-                    <h5>Work out wherever you want.</h5>
-                  </div>
                 </div>
               </div>
             </div>

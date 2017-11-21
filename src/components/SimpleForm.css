@@ -6,13 +6,13 @@
 }
 
 .home #where_input {
+  padding: 0px !important;
   padding-bottom: 20px;
   margin-left: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: white;
-  width: 280px !important;
   -webkit-appearance: none;
   border-radius: 0;
   border: none;
