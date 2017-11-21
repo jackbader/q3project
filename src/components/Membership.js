@@ -1,6 +1,6 @@
 import React from 'react'
 import history from './History'
-import {Col, Card, CardTitle} from 'react-materialize'
+import {Row, Col, Card, CardTitle} from 'react-materialize'
 
 const Membership = ({membership, gyms, dates}) => {
 
@@ -12,11 +12,15 @@ const Membership = ({membership, gyms, dates}) => {
   }
 
   return (
-    <Col m={6} s={3}>
+
+    <Col m={3} s={3}>
+
     		<Card onClick={returnLink} className='blue-grey darken-1' textClassName='white-text' header={<CardTitle image={imageUrl}></CardTitle>}
         title={gym[0].name}>
     		</Card>
+
     </Col>
+
   )
 
 }

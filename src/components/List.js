@@ -1,9 +1,30 @@
-import React from 'react'
-import {Row, Input} from 'react-materialize'
+import React, { Component } from 'react'
+import {Row, Input, Toast} from 'react-materialize'
 import './List.css';
 import DatePicker from './DatePicker'
+declare var $: any;
 
-const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMembership}) => {
+const List = ({isLoggedIn, sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMembership, selectedDays, changeModalState}) => {
+
+  console.log('list page re-rendered')
+
+  let string = ""
+  if (typeof selectedDays === 'undefined') {
+      console.log('selected days is undefined');
+
+      string = "You must select a day!"
+  }
+  if (isLoggedIn === false) {
+    console.log('user is not logged in')
+    string = ""
+  }
+
+
+
+  // else {
+  //   console.log('else setting to nothing')
+  //   string = ""
+  // }
 
   const Gym = ({gym}) => {
     return (
@@ -13,23 +34,46 @@ const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMemb
     )
   }
 
+
+
   const submitForm = (e) => {
     e.preventDefault()
-    let gym_id = e.target.gym.value
 
-    let user = JSON.parse(localStorage.user)
-    let user_id = user.id
+    if (typeof localStorage.user === 'undefined') {
+      console.log('user is not logged in!')
+      //open up signup modals
+      changeModalState("Welcome to Flex")
+      $('#signupmodal').modal('open')
+    } else {
 
-    let object = {
-      gym_id: parseInt(gym_id, 10),
-      user_id: user_id
+      console.log(selectedDays)
+
+      if (typeof selectedDays === 'undefined') {
+        console.log('hi')
+
+      } else {
+        let gym_id = e.target.gym.value
+
+        let user = JSON.parse(localStorage.user)
+        let user_id = user.id
+
+        let object = {
+          gym_id: parseInt(gym_id, 10),
+          user_id: user_id
+        }
+
+        createNewMembership(object)
+      }
     }
 
-    createNewMembership(object)
+
   }
 
   return (
     <div>
+      {/* <Toast toast="here you go!">
+
+      </Toast> */}
       <div className="genaslistpage">
           <div>
             <div>
@@ -47,12 +91,11 @@ const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMemb
               { gyms.map((gym, i) => <Gym key={ i } gym={ gym } />) }
             </Input>
           </div>
-        {/* </div> */}
         <div className="row">
           <div className="center-me">
             <p className="almost-centered">Select the days you want to list</p>
               <DatePicker id="datePicker" sendSelectedDays={sendSelectedDays}/>
-          </div>
+            <Toast type="submit" value="Send" className="btn btn-primary" toast={string}></Toast>
             <div className='center-align'>
               <input type="submit" value="Send" className="btn btn-primary"></input>
             </div>
