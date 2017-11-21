@@ -99,6 +99,7 @@ const List = ({isLoggedIn, sendSelectedDays, sendGym, sendNewMembership, gyms, c
             <div className='center-align'>
               <input type="submit" value="Send" className="btn btn-primary"></input>
             </div>
+          </div>
         </div>
       </div>
     </form>

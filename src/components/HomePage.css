@@ -227,9 +227,9 @@ nav .brand-logo {
   display: none;
 }
 
-.home .image-block {
-  /*background-image: url("https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59dca061cd0f68a14032d8c2/1507631269928/Screen+Shot+2017-10-04+at+8.35.08+PM.png");*/
-  /*height: 200px;*/
+.home .image-square {
+  height: 175px;
+  width: 275px;
 }
 
 #facebook-btn {
