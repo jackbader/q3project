@@ -72,33 +72,32 @@ const List = ({isLoggedIn, sendSelectedDays, sendGym, sendNewMembership, gyms, c
   return (
     <div>
       <div className="genaslistpage">
-          <div>
-            <div>
-              {/* <img alt className="background-img" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59d29e3912abd95b114165e0/1506977910596/Equinox.jpg"></img> */}
-              <h3 className="floatoverbackground"> List Your Gym</h3>
-              <h3 className="floatoverbackgroundlower">Membership</h3>
-            </div>
-          </div>
-      </div>
-      <form onSubmit={submitForm} >
-        <div className="row">
-          <div className="genas-input">
-            <Input id="gym" className="selectgym" type='select' label="Select your gym">
-              { gyms.map((gym, i) => <Gym key={ i } gym={ gym } />) }
-            </Input>
-          </div>
-          <div className="row">
-            <div className="center-me">
-              <p className="almost-centered">Select the days you want to list</p>
-                <DatePicker id="datePicker" sendSelectedDays={sendSelectedDays}/>
-              <Toast type="submit" value="Send" className="btn btn-primary" toast={string}></Toast>
-              <div className='center-align'>
-                <input type="submit" value="Send" className="btn btn-primary"></input>
+        <div className="list-img-container">
+          <img alt="" className="list-background-img" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59d29e3912abd95b114165e0/1506977910596/Equinox.jpg?format=1500w"></img>
+        </div>
+        <div className="page-title-wrapper">
+          <h1>List Your Gym</h1>
+          <h1>Membership</h1>
+        </div>
+        <div>
+          <div className="form-container">
+            <form onSubmit={submitForm} >
+              <div className="row">
+                  <Input id="gym" className="selectgym" type='select' label="Select your gym">
+                    { gyms.map((gym, i) => <Gym key={ i } gym={ gym } />) }
+                  </Input>
               </div>
-            </div>
+              <div className="row">
+                <p>Select the days you want to list</p>
+                <DatePicker id="datePicker" sendSelectedDays={sendSelectedDays}/>
+              </div>
+              <div className="row">
+                <Toast type="submit" value="Send" className="btn btn-primary" toast={string}>List</Toast>
+              </div>
+            </form>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   )
 }
