@@ -8,51 +8,49 @@ import moment from 'moment';
 declare var $: any;
 
 const Search = ({modal, createUser, memberships, gyms, search, dates, updateSearchStateDate}) => {
-
-  // console.log(memberships)
   dates = JSON.parse(dates)
-  // console.log(dates)
-  // console.log(moment(dates[0].date_available))
-  // console.log(search.date)
 
   let membershipDate;
   let matchedIds = []
 
   if (typeof search.date !== 'undefined') {
-    console.log('hi')
+
+    //if u set a new date on the page
+
     for (let i = 0; i<dates.length; i++) {
       membershipDate = dates[i].date_available
-      let newMembershipDate = moment(membershipDate).year() + "-" + (moment(membershipDate).month() + 1) + "-" + moment(membershipDate).date()
-      let newSearchDate = moment(search.date).year() + '-' + (moment(search.date).month() + 1) + '-' + moment(search.date).date()
-      console.log(newSearchDate)
 
-      if (moment(newMembershipDate).diff(moment(newSearchDate)) === 0) {
+      const fullMembershipDate = moment.utc(membershipDate).format('YYYY-MM-DD')
+      const fullNewSearchDate = moment(search.date).format('YYYY-MM-DD');
+
+      // console.log(fullMembershipDate, fullNewSearchDate, fullMembershipDate === fullNewSearchDate);
+
+      if (fullMembershipDate === fullNewSearchDate) {
+        console.log('membership date matches search date')
         matchedIds.push(dates[i].membership_id)
       }
     }
     //use serach.date to compare to membership dates
 
   } else {
-    //use todays date to compare to memberhsip dates
+    // todays date if none selected use todays date
     let todaysDate = moment()
 
     for (let i = 0; i<dates.length; i++) {
 
       membershipDate = dates[i].date_available
 
-      let newMembershipDate = moment(membershipDate).year() + "-" + (moment(membershipDate).month() + 1) + "-" + moment(membershipDate).date()
-      let newTodaysDate = moment(todaysDate).year() + "-" + (moment(todaysDate).month() + 1) + "-" + moment(todaysDate).date()
+      const fullMembershipDate = moment.utc(membershipDate).format('YYYY-MM-DD')
+      const fullNewSearchDate = moment(todaysDate).format('YYYY-MM-DD');
 
-      if (moment(newMembershipDate).diff(moment(newTodaysDate)) === 0) {
+      if (fullMembershipDate === fullNewSearchDate) {
         matchedIds.push(dates[i].membership_id)
       }
     }
 
   }
 
-  console.log('yo')
-
-  console.log(matchedIds)
+  // console.log(matchedIds)
   // console.log(membership.id)
   memberships = memberships.filter((membership) => matchedIds.includes(parseInt(membership.id)))
   console.log(memberships)
