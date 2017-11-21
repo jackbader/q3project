@@ -20,7 +20,9 @@
 
 .genas-input {
   color: black !important;
-  font-size: 8em
+  font-size: 8em;
+  /*padding-top: 10%;*/
+  padding-left: 15%;
 }
 
 .floatoverbackground {
@@ -49,10 +51,10 @@
 }
 
 
-.genaslistpage .input-field label {
+/*.genaslistpage .input-field label {
   color: black !important;
   font-size: 8em
-}
+}*/
 
 .selectgym {
   color: black !important;
@@ -68,6 +70,19 @@
   font-size: 1em
 }
 
+.almost-centered {
+  padding-left: 3.75%;
+}
+
+.center-me {
+  padding-left: 39%;
+}
+
+/*#button-padding {
+  padding-left: 50%;
+
+}*/
+
 #submitlist {
   display: center;
   background-color: white;
@@ -77,6 +92,9 @@
   margin: 0 auto;
 }
 
-.DayPicker-Caption {
+
+
+/*.DayPicker-Caption {
   color: black !important;
-}
+  display: inline;
+}*/
