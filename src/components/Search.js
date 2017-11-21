@@ -19,21 +19,37 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
   let matchedIds = []
 
   if (typeof search.date !== 'undefined') {
-    console.log('hi')
+
+    //if u set a new date on the page
+
     for (let i = 0; i<dates.length; i++) {
       membershipDate = dates[i].date_available
-      let newMembershipDate = moment(membershipDate).year() + "-" + (moment(membershipDate).month() + 1) + "-" + moment(membershipDate).date()
-      let newSearchDate = moment(search.date).year() + '-' + (moment(search.date).month() + 1) + '-' + moment(search.date).date()
-      console.log(newSearchDate)
+      // console.log((membershipDate)+1)
+      // console.log(moment(membershipDate))
+      // let test = moment(membershipDate)
+      // // console.log(moment(test).format('DD'))
+      // // console.log(test)
+      // // console.log(JSON.stringify(test))
+      // let newMembershipDate = moment(membershipDate).year() + '-' + (moment(membershipDate).month() + 1) + '-' + (moment(membershipDate).format('DD') + 1)
+      // let newSearchDate = moment(search.date).year() + '-' + (moment(search.date).month() + 1) + '-' + moment(search.date).date()
 
-      if (moment(newMembershipDate).diff(moment(newSearchDate)) === 0) {
+      const fullMembershipDate = moment.utc(membershipDate).format('YYYY-MM-DD')
+
+      const fullNewSearchDate = moment(search.date).format('YYYY-MM-DD');
+
+      console.log(fullMembershipDate, fullNewSearchDate, fullMembershipDate === fullNewSearchDate);
+      // console.log(newMembershipDate)
+      // console.log(newSearchDate)
+
+      if (fullMembershipDate === fullNewSearchDate) {
+        console.log('membership date matches search date')
         matchedIds.push(dates[i].membership_id)
       }
     }
     //use serach.date to compare to membership dates
 
   } else {
-    //use todays date to compare to memberhsip dates
+    // todays date if none selected use todays date
     let todaysDate = moment()
 
     for (let i = 0; i<dates.length; i++) {
@@ -49,8 +65,6 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
     }
 
   }
-
-  console.log('yo')
 
   console.log(matchedIds)
   // console.log(membership.id)
