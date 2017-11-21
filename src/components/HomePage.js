@@ -3,6 +3,8 @@ import {Button, Row, Input} from 'react-materialize'
 import './HomePage.css';
 import SimpleForm from '../components/SimpleForm'
 import history from './History'
+import moment from 'moment';
+
 
 const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
 
@@ -12,7 +14,10 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
     e.preventDefault()
     console.log(e.target.date.value)
     console.log(e.target.where_input.value)
-    const date = e.target.date.value
+    let date = e.target.date.value
+    if (date === "") {
+      date = moment()
+    }
     const where = e.target.where_input.value
     updateSearchState(date, where)
     history.push('/search')
@@ -21,7 +26,7 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
   return (
     <div className="home">
 
-      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Proxima Nova"></link>
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=ProximaNova"></link>
 
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places&callback=initMap"
               async defer></script>
