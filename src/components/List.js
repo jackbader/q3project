@@ -9,7 +9,7 @@ const List = ({isLoggedIn, sendSelectedDays, sendGym, sendNewMembership, gyms, c
   console.log('list page re-rendered')
 
   let string = ""
-  if (typeof selectedDays === 'undefined') {
+  if (typeof selectedDays === 'undefined' || selectedDays.length === 0) {
       console.log('selected days is undefined');
 
       string = "You must select a day!"
@@ -48,7 +48,7 @@ const List = ({isLoggedIn, sendSelectedDays, sendGym, sendNewMembership, gyms, c
 
       console.log(selectedDays)
 
-      if (typeof selectedDays === 'undefined') {
+      if (typeof selectedDays === 'undefined' || selectedDays.length === 0) {
         console.log('hi')
 
       } else {
