@@ -85,26 +85,24 @@ const List = ({isLoggedIn, sendSelectedDays, sendGym, sendNewMembership, gyms, c
       </div>
       <form onSubmit={submitForm} >
       <div className="row">
-        <div className="col s4">
+        {/* <div className="col s4 push s4"> */}
           <div className="genas-input">
             <Input id="gym" className="selectgym" type='select' label="Select your gym">
               { gyms.map((gym, i) => <Gym key={ i } gym={ gym } />) }
             </Input>
           </div>
-        </div>
         <div className="row">
-          <div className="col s4">
-            <p className="center">Select the days you want to list</p>
+          <div className="center-me">
+            <p className="almost-centered">Select the days you want to list</p>
               <DatePicker id="datePicker" sendSelectedDays={sendSelectedDays}/>
-            {/* <input type="submit" value="Send" className="btn btn-primary"></input> */}
-            <Toast type="submit" value="Send" className="btn btn-primary" toast={string}>
-
-            </Toast>
-          </div>
+            <Toast type="submit" value="Send" className="btn btn-primary" toast={string}></Toast>
+            <div className='center-align'>
+              <input type="submit" value="Send" className="btn btn-primary"></input>
+            </div>
         </div>
       </div>
     </form>
-    </div>
+  </div>
   )
 }
 
