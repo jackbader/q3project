@@ -72,7 +72,7 @@ const Header = ({logoutUser, isLoggedIn, state, modal, changeModalState, createU
     return (
       <div>
         <div className="button-container">
-          <a href="http://localhost:3000/auth/facebook" id="facebook-btn" ><img alt="" className="facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1000px-F_icon_reversed.svg.png"></img>Sign up with Facebook</a>
+          <a href="https://flex-routes.herokuapp.com/auth/facebook" id="facebook-btn" ><img alt="" className="facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1000px-F_icon_reversed.svg.png"></img>Sign up with Facebook</a>
           <a id="google-btn" ><img alt="" className="google-logo" src="https://cdn.worldvectorlogo.com/logos/google-icon.svg"></img>Sign up with Google</a>
         </div>
         <p className="signup-or-p">or</p>
