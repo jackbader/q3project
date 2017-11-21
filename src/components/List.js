@@ -31,9 +31,6 @@ const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMemb
   return (
     <div>
       <div className="genaslistpage">
-        <div className="center">
-        </div>
-        <form onSubmit={submitForm} >
           <div>
             <div>
               {/* <img alt className="background-img" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59d29e3912abd95b114165e0/1506977910596/Equinox.jpg"></img> */}
@@ -41,9 +38,9 @@ const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMemb
               <h3 className="floatoverbackgroundlower">Membership</h3>
             </div>
           </div>
-        </form>
       </div>
-    <div className="row">
+      <form onSubmit={submitForm} >
+      <div className="row">
         <div className="col s4">
           <div className="genas-input">
             <Input id="gym" className="selectgym" type='select' label="Select your gym">
@@ -59,6 +56,7 @@ const List = ({sendSelectedDays, sendGym, sendNewMembership, gyms, createNewMemb
           </div>
         </div>
       </div>
+    </form>
     </div>
   )
 }
