@@ -66,8 +66,6 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
           </div>
         </div>
         <div className="homepage-about">
-          <p>
-          </p>
         </div>
           <div className="container">
             <div className="section">
@@ -77,7 +75,7 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
                   <div className="image-block">
                     <h2 className="center light-blue-text"><i className="material-icons">flash_on</i></h2>
                     <h5 className="center">Rent</h5>
-                    <img src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59dca061cd0f68a14032d8c2/1507631269928/Screen+Shot+2017-10-04+at+8.35.08+PM.png"></img>
+                    <img className="image-square" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59dca061cd0f68a14032d8c2/1507631269928/Screen+Shot+2017-10-04+at+8.35.08+PM.png"></img>
                     <p className="light">Search available short-term memberships for the location and dates you want. Filter by price, amenities, reviews, and more to find the perfect workout space.</p>
                   </div>
                 </div>
