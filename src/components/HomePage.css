@@ -52,6 +52,30 @@ nav .brand-logo {
   font-weight: 100;
 }
 
+.home .picker__date-display {
+  background-color: black !important;
+}
+
+.home .picker__weekday-display {
+  background-color: black !important;
+}
+
+.home .picker--focused .picker__day--selected {
+  background-color: black !important;
+}
+
+.home .picker__day.picker__day--today {
+  color: black;
+}
+
+.home .picker__close {
+  color: black;
+}
+
+.home .picker__today {
+  color: black;
+}
+
 .home .search-container {
   margin-top: 180px;
   width: 100%;

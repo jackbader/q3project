@@ -224,6 +224,7 @@ class App extends Component {
     if (typeof this.state.selectedDays === 'undefined') {
       return 'selected days is undefined'
     }
+    console.log(data)
     let response = await fetch(`${process.env.REACT_APP_API_URL}/memberships`, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -233,6 +234,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
+    console.log(response)
     const newMembership = await response.json()
     const items = this.state.memberships
     const clone = [
