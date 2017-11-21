@@ -42,6 +42,21 @@ class App extends Component {
     const usersResponse = await fetch(`${process.env.REACT_APP_API_URL}/users`)
     const usersJson = await usersResponse.json()
 
+    var user_id = this.getParameterByName('id')
+
+    if (user_id !== null) {
+      const userResponse = await fetch(`${process.env.REACT_APP_API_URL}/users/${user_id}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }
+      })
+      const userJson = await userResponse.json()
+      localStorage.setItem("user", JSON.stringify(userJson[0]));
+    }
+
     const tokenResponse = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
       method: 'GET',
       credentials: 'include',
@@ -85,6 +100,16 @@ class App extends Component {
     })
   }
 
+  getParameterByName = (name, url) => {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
   createUser = async(info) => {
     await fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: 'POST',
@@ -117,11 +142,12 @@ class App extends Component {
     console.log(response)
     if (response.status !== 400) {
       const userInfo = await response.json()
+      localStorage.setItem("user", JSON.stringify(userInfo));
+
       this.setState({
         ...this.state,
         isLoggedIn: true
       })
-      localStorage.setItem("user", JSON.stringify(userInfo));
       $('#loginmodal').modal('close')
       $('#signupmodal').modal('close')
     } else {

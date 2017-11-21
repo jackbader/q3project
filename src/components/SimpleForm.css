@@ -6,9 +6,31 @@
 }
 
 .home #where_input {
-  padding: 0 !important;
+  padding-bottom: 20px;
   margin-left: 10px;
-  width: 360px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+  width: 280px !important;
+  -webkit-appearance: none;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  height: auto;
+  font-size: 18px;
+  -webkit-rtl-ordering: logical;
+  user-select: text;
+  cursor: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  text-rendering: auto;
+  font: 18px system-ui;
 }
 
 .home .date-picker .input-field label {
@@ -17,4 +39,15 @@
 
 .home .date-picker .input-field {
   margin-top: 0px !important;
+}
+
+#PlacesAutocomplete__root {
+  padding-bottom: 20px !important;
+}
+#PlacesAutocomplete__autocomplete-container {
+  z-index: 10;
+}
+
+.home * {
+  box-sizing: content-box;
 }
