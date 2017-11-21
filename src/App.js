@@ -10,6 +10,7 @@ import ErrorPage from './components/ErrorPage'
 import Search from './components/Search'
 import Header from './components/Header'
 import MembershipPage from './components/MembershipPage'
+import ProfilePage from './components/ProfilePage'
 
 declare var $: any;
 
@@ -20,6 +21,7 @@ class App extends Component {
     this.state = {
         gyms: [],
         memberships: [],
+        users: [],
         user: {},
         modal: {
           name: 'Welcome to Flex'
@@ -30,13 +32,17 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const gymsResponse = await fetch(`http://localhost:3000/gyms`)
+    const gymsResponse = await fetch(`${process.env.REACT_APP_API_URL}/gyms`)
+    console.log(gymsResponse)
     const gymsJson = await gymsResponse.json()
 
-    const membershipsResponse = await fetch(`http://localhost:3000/memberships`)
+    const membershipsResponse = await fetch(`${process.env.REACT_APP_API_URL}/memberships`)
     const membershipsJson = await membershipsResponse.json()
 
-    const tokenResponse = await fetch(`http://localhost:3000/token`, {
+    const usersResponse = await fetch(`${process.env.REACT_APP_API_URL}/users`)
+    const usersJson = await usersResponse.json()
+
+    const tokenResponse = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -46,7 +52,7 @@ class App extends Component {
     })
     const tokenJson = await tokenResponse.json()
 
-    let datesResponse = await fetch(`http://localhost:3000/dates`, {
+    let datesResponse = await fetch(`${process.env.REACT_APP_API_URL}/dates`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -63,8 +69,11 @@ class App extends Component {
       gyms: gymsJson,
       isLoggedIn: tokenJson,
       loading: false,
+      users: usersJson,
       dates: JSON.stringify(datesJson)
     })
+
+    console.log(this.state)
   }
 
   changeModalState = (string) => {
@@ -77,7 +86,7 @@ class App extends Component {
   }
 
   createUser = async(info) => {
-    await fetch(`http://localhost:3000/users`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: 'POST',
       body: JSON.stringify(info),
       headers: {
@@ -85,11 +94,18 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
+    // this.setState({
+    //   ...this.state,
+    //   users: {
+    //     ...this.state.users,
+    //
+    //   }
+    // })
     $('#signupmodal').modal('close')
   }
 
   userLogin = async(info) => {
-    let response = await fetch(`http://localhost:3000/token`, {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
       method: 'POST',
       body: JSON.stringify(info),
       credentials: 'include',
@@ -98,6 +114,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
+    console.log(response)
     if (response.status !== 400) {
       const userInfo = await response.json()
       this.setState({
@@ -123,7 +140,6 @@ class App extends Component {
       ...this.state,
       selectedDays: selectedDays
     })
-    console.log(selectedDays)
   }
 
   sendGym = (gym) => {
@@ -131,11 +147,10 @@ class App extends Component {
       ...this.state,
       gym: gym
     })
-    console.log(gym)
   }
 
   isLoggedIn = async() => {
-    const response = await fetch(`http://localhost:3000/token`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/token`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -145,14 +160,12 @@ class App extends Component {
     })
     const userInfo = await response.json()
     if (userInfo === true) {
-      console.log('isLoggedIn is returning true')
       this.setState({
         ...this.state,
         isLoggedIn: true
       })
       return true
     } else {
-      console.log('isLoggedIn is returning false')
       this.setState({
         ...this.state,
         isLoggedIn: false
@@ -162,7 +175,7 @@ class App extends Component {
   }
 
   logoutUser = async() => {
-    await fetch(`http://localhost:3000/token`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/token`, {
       method: 'delete',
       credentials: 'include',
       headers: {
@@ -170,24 +183,22 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
+
+    $('#loginmodal').modal('close')
+    localStorage.removeItem('user')
+
     this.setState({
       ...this.state,
       isLoggedIn: false
     })
-    $('#loginmodal').modal('close')
-  }
-
-  sendNewMembership = async() => {
-    const selectGyms = this.state.gym
-    const selectDays = this.state.selectedDays
-    console.log(selectGyms)
-    console.log(selectDays)
 
   }
 
   createNewMembership = async(data) => {
-    console.log(data)
-    let response = await fetch(`http://localhost:3000/memberships`, {
+    if (typeof this.state.selectedDays === 'undefined') {
+      return 'selected days is undefined'
+    }
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/memberships`, {
       method: 'POST',
       body: JSON.stringify(data),
       credentials: 'include',
@@ -196,9 +207,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    console.log(response)
     const newMembership = await response.json()
-    console.log(newMembership)
     const items = this.state.memberships
     const clone = [
       ...items,
@@ -221,7 +230,8 @@ class App extends Component {
         booked: false
       })
     }
-    let dateResponse = await fetch(`http://localhost:3000/dates`, {
+
+    let dateResponse = await fetch(`${process.env.REACT_APP_API_URL}/dates`, {
       method: 'POST',
       body: JSON.stringify({arr: newArr}),
       credentials: 'include',
@@ -230,7 +240,6 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-
     let newDates = await dateResponse.json()
     const oldDates = this.state.dates
     let copy = oldDates.slice(0)
@@ -239,58 +248,9 @@ class App extends Component {
     // console.log(copy2)
     this.setState({
       ...this.state,
-        dates: copy2
+        dates: JSON.stringify(copy2)
     })
-    console.log(this.state.dates)
-
-
-    // const newDatesJson = newDates.json
-    // console.log("LOOK HERE "+newDatesJson)
-    //
-    // for (let i = 0; i<newDates.length; i++) {
-    //   console.log(newDates[i])
-    //   // clone2.push(newDates[i])
-    //
-    // }
-    // this.setState({
-    //   ...this.state
-    //   dates:
-    // })
-
-    // let datesResponse = await fetch(`http://localhost:3000/dates`, {
-    //   method: 'GET',
-    //   credentials: 'include',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json',
-    //   }
-    // })
-
-    // const datesJson = await datesResponse.json()
-
-    // this.setState({
-    //   ...this.state,
-    //   dates: datesJson
-    // })
-    //
-    // console.log(this.state)
-
-    // const datejson = await dateResponse.json()
-    //   console.log(datejson)
-    //   const newDateInfo = [...this.state.dates]
-    //   for(i=0; i<newDateInfo.length; i++) {
-    //     newDateInfo.push(datejson[i])
-    //   }
-    //   console.log(newDateInfo)
-    //   this.setState({
-    //     ...this.state,
-    //       dates: JSON.stringify(newDateInfo)
-    //   })
   }
-
-
-
-
 
   updateSearchState = (date, where) => {
     this.setState({
@@ -302,8 +262,19 @@ class App extends Component {
     })
   }
 
+  updateSearchStateDate = (date) => {
+    console.log(date)
+    this.setState({
+      ...this.state,
+      search: {
+        ...this.state.search,
+        date: date
+      }
+    })
+  }
+
   deleteMembership = async(membership) => {
-    await fetch(`http://localhost:3000/memberships/${membership.id}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/memberships/${membership.id}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: {
@@ -345,13 +316,14 @@ class App extends Component {
 
       <div>
 
-        <Header hitFacebookRoute={this.hitFacebookRoute} logoutUser={this.logoutUser} isLoggedIn={this.isLoggedIn} state={this.state} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} userLogin={this.userLogin}/>
+        <Header users={this.state.users} hitFacebookRoute={this.hitFacebookRoute} logoutUser={this.logoutUser} isLoggedIn={this.isLoggedIn} state={this.state} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} userLogin={this.userLogin}/>
         <Router history={history}>
           <Switch>
+            <Route path="/profile/:id" render= {({match}) => <ProfilePage match={match} users={this.state.users}/> } />
             <Route path="/membership/:id" render= {({match}) => <MembershipPage deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
-            <Route path="/checkout/:id" render= {({match}) => <Checkout match={match} history={history}/>} />
-            <Route path="/list" render= {() => <List createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
-            <Route path="/search" render= {() => <Search dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
+            <Route path="/checkout/:id" render= {({match}) => <Checkout dates={this.state.dates} memberships={this.state.memberships} match={match} history={history}/>} />
+            <Route path="/list" render= {() => <List isLoggedIn={this.state.isLoggedIn} changeModalState={this.changeModalState} selectedDays={this.state.selectedDays} createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
+            <Route path="/search" render= {() => <Search updateSearchStateDate={this.updateSearchStateDate} dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />
             <HomePage updateSearchState={this.updateSearchState} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser}/>
           </Switch>

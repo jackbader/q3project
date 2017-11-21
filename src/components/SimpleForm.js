@@ -5,7 +5,13 @@ import './SimpleForm.css';
 class SimpleForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { address: props.where }
+    if (typeof props.where !== "undefined") {
+      this.state = { address: props.where }
+    } else {
+      this.state = {
+        address: 'Boulder, CO, USA'
+      }
+    }
     this.onChange = (address) => this.setState({ address })
   }
 
