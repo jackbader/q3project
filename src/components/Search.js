@@ -68,17 +68,23 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
         <div className="search-bar">
           <div className="search-inputs">
 
-            <div className="when-where">
-              <h5>Enter city or address:</h5>
-              <SimpleForm where={search.where}/>
-
-              <h5>Select date:</h5>
-              <JacksDatePicker updateSearchStateDate={updateSearchStateDate} date={search.date}/>
-
-              {/* <Input value={search.date} defaultValue="kjdslf" label="When" name='on' type='date' onChange={function(e, value) {}} /> */}
+            <div className="where">
+              <div className="row">
+              <div className="col s12 m4">
+                <h5>Enter City or Address:</h5>
+                <SimpleForm where={search.where}/>
+              </div>
+            <div className="col s12 m8">
+              <div className="when">
+                <h5>Select date:</h5>
+                <JacksDatePicker updateSearchStateDate={updateSearchStateDate} date={search.date}/>
+              </div>
+            </div>
             </div>
           </div>
+              {/* <Input value={search.date} defaultValue="kjdslf" label="When" name='on' type='date' onChange={function(e, value) {}} /> */}
           </div>
+        </div>
 
       <div className="mappedmembers">
         <Row>
