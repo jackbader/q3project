@@ -13,13 +13,13 @@ const Membership = ({membership, gyms, dates}) => {
 
   return (
 
-    <Col m={3} s={3}>
+    // <Col m={2} s={2}>
 
     		<Card onClick={returnLink} className='blue-grey darken-1' textClassName='white-text' header={<CardTitle image={imageUrl}></CardTitle>}
         title={gym[0].name}>
     		</Card>
 
-    </Col>
+    // </Col>
 
   )
 

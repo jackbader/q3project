@@ -2,7 +2,7 @@ import React from 'react'
 import Payment from './Payment'
 import './Checkout.css';
 
-const Checkout = ({match, history, dates, memberships, gyms}) =>{
+const Checkout = ({match, history, dates, memberships, gyms, updateCheckoutDateState, checkoutDate}) =>{
 
   console.log(match.params.id)
 
@@ -13,7 +13,7 @@ const Checkout = ({match, history, dates, memberships, gyms}) =>{
       <h1 className="checkout-h1">Checkout</h1>
 
       <div className="checkout-body">
-        <Payment gyms={gyms} dates={dates} memberships={memberships} match={match} history={history}/>
+        <Payment checkoutDate={checkoutDate} updateCheckoutDateState={updateCheckoutDateState} gyms={gyms} dates={dates} memberships={memberships} match={match} history={history}/>
       </div>
     </div>
   )

@@ -38,8 +38,9 @@
 }
 
 .genaslistpage .input-field label {
-  color: black !important;
+  color: white !important;
   font-size: 8em;
+  left: 0px;
   position: relative;
 }
 
@@ -64,13 +65,43 @@
   margin: auto;
 }
 
+.genaslistpage .select-wrapper input.select-dropdown {
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+.genaslistpage .select-wrapper span.caret {
+  color: white;
+}
+
+.genaslistpage .row {
+  margin-bottom: 0px;
+}
+
+.genaslistpage .center-absolute {
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  top: 0;
+  margin-top: 160px;
+}
+
 /*.genaslistpage .input-field label {
   color: black !important;
   font-size: 8em
 }*/
 
 .genaslistpage form {
-  background-color: red !important;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.genaslistpage .DayPicker-Day--today {
+  color: white;
+}
+
+.genaslistpage .send-button-div {
+  padding-bottom: 20px
 }
 
 .genaslistpage h1 {
@@ -84,16 +115,24 @@
   font-size: 8em
 }
 .genaslistpage .DayPicker-Day {
-  color: black !important;
+  /*color: black !important;*/
+}
+
+.genaslistpage .DayPicker-Weekday {
+  color: white;
 }
 
 .genaslistpage p {
-  color: black !important;
+  color: white !important;
   text-align: center;
 }
 
 .genaslistpage .input-field label:not(.label-icon).active {
-  font-size: 1em
+  font-size: 1.5em
+}
+
+.genaslistpage .DayPicker {
+  color: white;
 }
 
 .almost-centered {
@@ -107,6 +146,8 @@
 .genaslistpage .toast {
   float: none;
   top: auto;
+  background-color: white;
+  color: black;
 }
 
 .center-me {

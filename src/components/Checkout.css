@@ -160,6 +160,7 @@
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  width: 200px;
 }
 
 .rent-date {
@@ -191,9 +192,63 @@
 }
 
 .summary-addressContainer {
+  width: 200px;
+}
+
+.summary-addressContainer {
   padding-top: 2px;
   margin-bottom: -2px;
   -webkit-box-flex: 1;
   flex: 1 1 auto;
   max-width: 100%;
+}
+
+.summary-payment {
+  margin: 0 20px;
+  border-top: 1px solid #C7C7C7;
+  padding: 15px 0;
+}
+
+.summary-payment-total {
+  margin-top: 5px;
+  margin-bottom: 13px;
+  padding-bottom: 0;
+  font-size: 13px;
+  padding-top: 15px;
+  border-top: 1px solid #C7C7C7;
+}
+
+.total-span {
+  font-size: 16px;
+  margin: 0;
+  color: #231F20;
+  display: inline-block;
+  flex-shrink: 0;
+  text-align: right;
+  float: right;
+}
+
+.total-p {
+  font-size: 16px;
+  margin: 0;
+  color: #231F20;
+  display: inline-block;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+
+.total-p-container {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.stripe-container {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
