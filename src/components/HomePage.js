@@ -66,30 +66,30 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
         <div className="homepage-about">
         </div>
           <div className="container">
-            <div className="section">
+            <div className="center">
 
               <div className="row">
-                <div className="col s4 pull-s1">
+                <div className="col s12 m4">
                   <div className="image-block">
-                    <p className="left">Rent</p>
+                    <p className="flow-text">Rent</p>
                     <img className="image-square" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59dca061cd0f68a14032d8c2/1507631269928/Screen+Shot+2017-10-04+at+8.35.08+PM.png"></img>
-                    <p className="light">Search available short-term memberships for the location and dates you want. Filter by price, amenities, reviews, and more to find the perfect workout space.</p>
+                    <p className="flow-text">Search available short-term memberships for the location and dates you want. Filter by price, amenities, reviews, and more to find the perfect workout space.</p>
                   </div>
                 </div>
 
-                <div className="col s4">
+                <div className="col s12 m4">
                   <div className="image-block">
-                    <p className="left">List</p>
+                    <p className="flow-text">List</p>
                     <img className="image-square" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59d2aa37d7bdcebcbfb5917c/1506978366048/Nice+gym.jpg?format=1000w"></img>
-                    <p className="light">List an existing gym membership in the marketplace and the dates it's available for others to use.</p>
+                    <p className="flow-text">List an existing gym membership in the marketplace and the dates it's available for others to use.</p>
                   </div>
                 </div>
 
-                <div className="col s4 push-s1">
+                <div className="col s12 m4">
                   <div className="image-block">
-                    <p className="left">Enjoy</p>
+                    <p className="flow-text">Enjoy</p>
                     <img className="image-square" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59d29d54f14aa1cf0f671e6a/1506975130054/?format=1000w"></img>
-                    <p className="light">Renters get instant access to gyms across the country at the best prices, no long-term contracts required. Listers turn unused memberships into money-makers.</p>
+                    <p className="flow-text">Renters get instant access to gyms across the country at the best prices, no long-term contracts required. Listers turn unused memberships into money-makers.</p>
                   </div>
                 </div>
               </div>
