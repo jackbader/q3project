@@ -2,6 +2,7 @@ import React from 'react'
 import Membership from './Membership'
 import history from './History'
 import './MembershipPage.css';
+import {Table, Button} from 'react-materialize'
 
 const MembershipPage = ({match, memberships, gyms, deleteMembership}) => {
 
@@ -38,11 +39,31 @@ const MembershipPage = ({match, memberships, gyms, deleteMembership}) => {
 
   return (
     <div className="membershippage">
+    <div className="membershipimg">
       <img src={imageUrl} ></img>
       {/* <Membership membership={membership[0]} gyms={gyms}/> */}
-      {(loggedInUser_id === user_id) ? <button onClick={preDeleteMemberShip} >Delete</button> : console.log('no match')}
-      <button onClick={bookNow} >Book now</button>
+<Table>
+  <thead>
+  <tr>
+    <th data-field="id">Address</th>
+    <th data-field="price">Price</th>
+    <th data-field="price">Amenities</th>
+  </tr>
+  <tr>
+  <td><a target="_blank" href="https://www.google.com/maps/place/ONE+Boulder+Fitness/@40.0154005,-105.2838512,15z/data=!4m5!3m4!1s0x876bec2612e40e0d:0x7803605d00be30ce!8m2!3d40.0167628!4d-105.2790516">1800 Broadway Suite 190, Boulder, CO 80302</a></td>
+  <td>$7/day </td>
+  <i className="material-icons">hot_tub</i>
+    <i className="material-icons">fitness_center</i>
+    <i className="material-icons">pool</i>
+    </tr>
+</thead>
+</Table>
+    <div className="buttonsmembership">
+      {(loggedInUser_id === user_id) ? <Button className="search-button" waves='light' onClick={preDeleteMemberShip} >Delete </Button> : console.log('no match')}
+      <Button onClick={bookNow} >Book now</Button>
     </div>
+    </div>
+  </div>
   )
 }
 
