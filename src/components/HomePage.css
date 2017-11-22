@@ -209,7 +209,7 @@ nav .brand-logo {
   }
 }
 
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
   .home .background-container {
       padding-top: 60px;
   }
@@ -222,7 +222,7 @@ nav .brand-logo {
   .home .search-button {
     display: inherit;
   }
-}
+}*/
 
 .home html {
   color: white !important;

@@ -20,15 +20,15 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* height: 100%; */
-  height: 800px;
+  height: 765px;
 }
 
 .genaslistpage .list-background-img {
+  position: absolute;
   font-size: 0px;
   left: 0px;
   top: -37.6px;
-  width: 1440px;
+  /*width: 1440px;*/
   height: 925.2px;
   position: relative;
 }
