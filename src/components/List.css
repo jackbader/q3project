@@ -61,7 +61,7 @@
 }
 
 .genaslistpage .form-container {
-  width: 300px;
+  width: 400px;
   margin: auto;
 }
 
@@ -112,7 +112,8 @@
 
 .selectgym {
   color: black !important;
-  font-size: 8em
+  font-size: 8em;
+  padding-top: 20px;
 }
 .genaslistpage .DayPicker-Day {
   /*color: black !important;*/
@@ -125,6 +126,20 @@
 .genaslistpage p {
   color: white !important;
   text-align: center;
+  font-size: 20px;
+}
+
+.genaslistpage .dropdown-content li>span {
+  color: black !important;
+}
+
+.genaslistpage abbr[title] {
+  text-decoration: none;
+  border: none;
+}
+
+.genaslistpage .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside)  {
+  background-color: #ff0047;
 }
 
 .genaslistpage .input-field label:not(.label-icon).active {

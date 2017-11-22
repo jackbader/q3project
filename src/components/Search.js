@@ -88,7 +88,9 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
 
       <div className="mappedmembers">
         <Row>
+          <ul>
           { memberships.map((membership, i) => <Membership dates={dates} key={ membership.id } gyms={gyms} membership={ membership } />) }
+          </ul>
         </Row>
       </div>
     </div>

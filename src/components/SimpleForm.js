@@ -9,7 +9,7 @@ class SimpleForm extends React.Component {
       this.state = { address: props.where }
     } else {
       this.state = {
-        address: 'Boulder, CO, USA'
+        address: ''
       }
     }
     this.onChange = (address) => this.setState({ address })
