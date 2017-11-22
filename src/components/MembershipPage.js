@@ -60,7 +60,7 @@ const MembershipPage = ({match, memberships, gyms, deleteMembership}) => {
 </Table>
     <div className="buttonsmembership">
       {(loggedInUser_id === user_id) ? <Button className="search-button" waves='light' onClick={preDeleteMemberShip} >Delete </Button> : console.log('no match')}
-      <Button onClick={bookNow} >Book now</Button>
+      <Button className="rightbutton" onClick={bookNow} >Book now</Button>
     </div>
     </div>
   </div>

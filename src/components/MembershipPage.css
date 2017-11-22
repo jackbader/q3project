@@ -25,7 +25,11 @@ text-transform: uppercase
 }
 .buttonsmembership{
   text-align:center !important;
+
 }
 .membershipimg {
   text-align:center !important;
+}
+.rightbutton{
+  margin-left: 5px;
 }
