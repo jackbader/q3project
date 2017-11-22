@@ -38,6 +38,10 @@ nav .brand-logo {
   height: 800px;
 }
 
+.left {
+  width: 100px;
+}
+
 .home .background-img {
   font-size: 0px;
   /* left: -14.8649px; */
