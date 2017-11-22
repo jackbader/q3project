@@ -73,7 +73,7 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
       <div>
         <div className="button-container">
 
-          <a href="https://flex-routes.herokuapp.com/auth/facebook" id="facebook-btn" ><img alt="" className="facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1000px-F_icon_reversed.svg.png"></img>Sign up with Facebook</a>
+          <a href="http://localhost:3131/auth/facebook" id="facebook-btn" ><img alt="" className="facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1000px-F_icon_reversed.svg.png"></img>Sign up with Facebook</a>
           <a id="google-btn" ><img alt="" className="google-logo" src="https://cdn.worldvectorlogo.com/logos/google-icon.svg"></img>Sign up with Google</a>
 
         </div>
@@ -114,7 +114,7 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
               <label className="name-label">
                 First name
               </label>
-              <input name="first_name" className="name-input">
+              <input required name="first_name" className="name-input">
 
               </input>
             </div>
@@ -122,7 +122,7 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
               <label className="name-label">
                 Last name
               </label>
-              <input name="last_name" className="name-input">
+              <input required name="last_name" className="name-input">
 
               </input>
             </div>
@@ -131,7 +131,7 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
             <label className="email-label">
               Email
             </label>
-            <input name="email" className="email-input">
+            <input required name="email" className="email-input">
 
             </input>
           </div>
@@ -139,7 +139,7 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
             <label className="password-label">
               Choose a password
             </label>
-            <input type="password" name="password" className="password-input">
+            <input required type="password" name="password" className="password-input">
 
             </input>
           </div>
