@@ -341,9 +341,14 @@ class App extends Component {
     }
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 19bcc5063e3ae9ec374ad14a935c25d957ad200c
 
   render() {
-
+    // console.log("memberships from app.js "+JSON.stringify(this.state.memberships))
+    // console.log("gyms from app.js "+JSON.stringify(this.state.gyms))
 
     const { loading } = this.state;
 
@@ -353,14 +358,13 @@ class App extends Component {
 
     return (
 
-
       <div>
 
         <Header users={this.state.users} hitFacebookRoute={this.hitFacebookRoute} logoutUser={this.logoutUser} isLoggedIn={this.isLoggedIn} state={this.state} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} userLogin={this.userLogin}/>
         <Router history={history}>
           <Switch>
-            <Route path="/profile/:id" render= {({match}) => <ProfilePage match={match} users={this.state.users}/> } />
-            <Route path="/membership/:id" render= {({match}) => <MembershipPage updateCheckoutDateState={this.updateCheckoutDateState} deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
+            <Route path="/profile/:id" render= {({match}) => <ProfilePage dates={this.state.dates} match={match} memberships={this.state.memberships} gyms={this.state.gyms} users={this.state.users}/> } />
+            <Route path="/membership/:id" render= {({match}) => <MembershipPage deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
             <Route path="/checkout/:id" render= {({match}) => <Checkout checkoutDate={this.state.checkoutDate} updateCheckoutDateState={this.updateCheckoutDateState} gyms={this.state.gyms} dates={this.state.dates} memberships={this.state.memberships} match={match} history={history}/>} />
             <Route path="/list" render= {() => <List isLoggedIn={this.state.isLoggedIn} changeModalState={this.changeModalState} selectedDays={this.state.selectedDays} createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
             <Route path="/search" render= {() => <Search updateSearchStateDate={this.updateSearchStateDate} dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
