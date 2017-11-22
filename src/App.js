@@ -341,6 +341,10 @@ class App extends Component {
     }
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 19bcc5063e3ae9ec374ad14a935c25d957ad200c
 
   render() {
     // console.log("memberships from app.js "+JSON.stringify(this.state.memberships))
