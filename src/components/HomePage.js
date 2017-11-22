@@ -45,7 +45,7 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
                   <form onSubmit={submitSearch}>
                     <ul>
                       <div className="elementContainer elementContainer-where">
-                          <label for="on" >Where</label>
+                          <label htmlFor="on" >Where</label>
                           <SimpleForm />
                           <label for="on" >When</label>
                           <Input id="date" name='on' type='date' onChange={function(e, value) {}} />
