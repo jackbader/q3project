@@ -51,9 +51,19 @@
   float:left;
 }
 
-.search .when-where {
+.search .row {
+  padding-left: 10%
+}
+
+.search .when {
+  text-align: left;
+  padding-left: 50%;
+}
+
+.search .where {
   text-align: left;
 }
+
 .search .mappedmembers {
   text-align: center;
 }
