@@ -3,7 +3,7 @@ import Membership from './Membership'
 import history from './History'
 import './MembershipPage.css';
 
-const MembershipPage = ({match, memberships, gyms, deleteMembership}) => {
+const MembershipPage = ({match, memberships, gyms, deleteMembership, updateCheckoutDateState}) => {
 
   console.log(memberships)
   let membership = memberships.filter(membership => membership.id == match.params.id);
@@ -33,6 +33,7 @@ const MembershipPage = ({match, memberships, gyms, deleteMembership}) => {
 
   const bookNow = (e) => {
     history.push(`/checkout/${membership[0].id}`)
+    updateCheckoutDateState('clear')
     console.log('person wants to book it')
   }
 
