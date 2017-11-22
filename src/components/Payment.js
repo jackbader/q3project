@@ -23,7 +23,7 @@ const Payment = ({match, dates, memberships, gyms, updateCheckoutDateState, chec
   let formattedDates = []
   for (let i = 0; i<filteredDates.length; i++) {
     let unformattedDate = filteredDates[i].date_available
-    let formattedDate = moment(unformattedDate).format('YYYY-MM-DD')
+    let formattedDate = moment.utc(unformattedDate).format('YYYY-MM-DD')
     formattedDates.push(formattedDate)
   }
 
