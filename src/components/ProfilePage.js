@@ -43,28 +43,16 @@ const ProfilePage = ({match, users, findUserInfo, memberships, gyms, dates}) => 
   console.log(match.params.id)
 
   return (
-    <div className="info">
-      <div className="center">
-        <div className="row">
-          <div className="col s12 m7">
-            <div className="card">
-              <div className="card-image">
-                <img src="images/sample-1.jpg"></img>
-                <span className="card-title">Card Title</span>
-              </div>
-              <div className="card-content">
-                <p className="flow-text">{firstName} {lastName}</p>
-                <p className="flow-text">{email}</p>
-                <p className="flow-text">{stars}</p>
-              </div>
-              <div className="card-action">
-                <a href="#">This is a link</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        { membershipsTheyMade.map((membership, i) => <Membership dates={dates} key={ membership.id } gyms={gyms} membership={ membership } />) }
+    <div className="profile-page">
+      <h1>{firstName}'s Memberships:</h1>
+      <div className="ul-container">
+        <ul>
+          { membershipsTheyMade.map((membership, i) => <Membership dates={dates} key={ membership.id } gyms={gyms} membership={ membership } />) }
+        </ul>
       </div>
+      <h1>Info:</h1>
+      <p>Name: {firstName + ' ' + lastName}</p>
+      <p>Stars: {stars}</p>
     </div>
   )
 }

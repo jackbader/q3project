@@ -423,3 +423,7 @@ a#google-btn {
   background-image: url(https://imgur.com/a/sf5c);
   text-align: center;
 }
+
+.home .picker__table {
+  border: none;
+}

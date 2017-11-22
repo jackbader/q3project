@@ -33,3 +33,7 @@ text-transform: uppercase
 .rightbutton{
   margin-left: 5px;
 }
+
+.membershippage .material-icons {
+      margin-right: 10px;
+}
