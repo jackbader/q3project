@@ -154,7 +154,6 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
       console.log('local storage isnt undefined returning log out')
       return "Log out"
     } else {
-      console.log('local storage is undefined return log in')
       return "Log in"
     }
   }

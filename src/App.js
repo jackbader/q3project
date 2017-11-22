@@ -33,7 +33,6 @@ class App extends Component {
 
   async componentDidMount() {
     const gymsResponse = await fetch(`${process.env.REACT_APP_API_URL}/gyms`)
-    console.log(gymsResponse)
     const gymsJson = await gymsResponse.json()
 
     const membershipsResponse = await fetch(`${process.env.REACT_APP_API_URL}/memberships`)
@@ -88,7 +87,6 @@ class App extends Component {
       dates: JSON.stringify(datesJson)
     })
 
-    console.log(this.state)
   }
 
   changeModalState = (string) => {
