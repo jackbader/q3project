@@ -24,10 +24,7 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
   return (
     <div className="home">
 
-      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=ProximaNova"></link>
-
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places&callback=initMap"
-              async defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places&callback=initMap" async defer></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places"></script>
 
         <div className="homepage-background-container">
@@ -48,7 +45,7 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
                   <form onSubmit={submitSearch}>
                     <ul>
                       <div className="elementContainer elementContainer-where">
-                          <label for="on" >Where</label>
+                          <label htmlFor="on" >Where</label>
                           <SimpleForm />
                           <label for="on" >When</label>
                           <Input id="date" name='on' type='date' onChange={function(e, value) {}} />
