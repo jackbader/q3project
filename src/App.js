@@ -327,6 +327,20 @@ class App extends Component {
     // // console.log(itemsJson)
   }
 
+  updateCheckoutDateState = (date) => {
+    if (date === 'clear') {
+      this.setState({
+        ...this.state,
+        checkoutDate: undefined
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        checkoutDate: date
+      })
+    }
+  }
+
 
   render() {
 
@@ -346,8 +360,8 @@ class App extends Component {
         <Router history={history}>
           <Switch>
             <Route path="/profile/:id" render= {({match}) => <ProfilePage match={match} users={this.state.users}/> } />
-            <Route path="/membership/:id" render= {({match}) => <MembershipPage deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
-            <Route path="/checkout/:id" render= {({match}) => <Checkout dates={this.state.dates} memberships={this.state.memberships} match={match} history={history}/>} />
+            <Route path="/membership/:id" render= {({match}) => <MembershipPage updateCheckoutDateState={this.updateCheckoutDateState} deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
+            <Route path="/checkout/:id" render= {({match}) => <Checkout checkoutDate={this.state.checkoutDate} updateCheckoutDateState={this.updateCheckoutDateState} gyms={this.state.gyms} dates={this.state.dates} memberships={this.state.memberships} match={match} history={history}/>} />
             <Route path="/list" render= {() => <List isLoggedIn={this.state.isLoggedIn} changeModalState={this.changeModalState} selectedDays={this.state.selectedDays} createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
             <Route path="/search" render= {() => <Search updateSearchStateDate={this.updateSearchStateDate} dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />

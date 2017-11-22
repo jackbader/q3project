@@ -47,7 +47,7 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
                       <div className="elementContainer elementContainer-where">
                           <label htmlFor="on" >Where</label>
                           <SimpleForm />
-                          <label for="on" >When</label>
+                          <label htmlFor="on" >When</label>
                           <Input id="date" name='on' type='date' onChange={function(e, value) {}} />
                       </div>
                       <div className="elementContainer">

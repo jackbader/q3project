@@ -14,7 +14,7 @@ const List = ({isLoggedIn, sendSelectedDays, sendGym, sendNewMembership, gyms, c
 
       string = "You must select a day!"
   }
-  if (isLoggedIn === false) {
+  if (typeof localStorage.user === 'undefined') {
     console.log('user is not logged in')
     string = ""
   }
@@ -76,10 +76,10 @@ const List = ({isLoggedIn, sendSelectedDays, sendGym, sendNewMembership, gyms, c
           <img alt="" className="list-background-img" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59d29e3912abd95b114165e0/1506977910596/Equinox.jpg?format=1500w"></img>
         </div>
         <div className="page-title-wrapper">
-          <h1>List Your Gym</h1>
-          <h1>Membership</h1>
+          {/* <h1>List Your Gym</h1>
+          <h1>Membership</h1> */}
         </div>
-        <div>
+        <div className="center-absolute">
           <div className="form-container">
             <form onSubmit={submitForm} >
               <div className="row">
@@ -91,7 +91,7 @@ const List = ({isLoggedIn, sendSelectedDays, sendGym, sendNewMembership, gyms, c
                 <p>Select the days you want to list</p>
                 <DatePicker id="datePicker" sendSelectedDays={sendSelectedDays}/>
               </div>
-              <div className="row">
+              <div className="row send-button-div">
                 <Toast type="submit" value="Send" className="btn btn-primary" toast={string}>List</Toast>
               </div>
             </form>
