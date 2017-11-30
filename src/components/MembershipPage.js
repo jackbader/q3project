@@ -1,7 +1,6 @@
 import React from 'react'
 import Membership from './Membership'
 import history from './History'
-import './MembershipPage.css';
 import {Table, Button} from 'react-materialize'
 
 const MembershipPage = ({match, memberships, gyms, deleteMembership, updateCheckoutDateState}) => {

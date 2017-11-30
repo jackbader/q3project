@@ -11,6 +11,7 @@ import Search from './components/Search'
 import Header from './components/Header'
 import MembershipPage from './components/MembershipPage'
 import ProfilePage from './components/ProfilePage'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
 declare var $: any;
 
