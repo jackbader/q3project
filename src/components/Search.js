@@ -75,7 +75,7 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
               <div className="row">
               <div className="col s12 m4">
                 <h5>Enter City or Address:</h5>
-                {/* <SimpleForm where={search.where}/> */}
+                <SimpleForm where={search.where}/>
               </div>
             <div className="col s12 m8">
               <div className="when">

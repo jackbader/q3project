@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 // import EnterLocation from './PlacesAutocomplete'
 // import PlacesAutocomplete from 'react-places-autocomplete'
@@ -8,7 +7,8 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 export class MapContainer extends Component {
 render() {
     return (
-      <Map google={this.props.google} zoom={14}
+      <Map google={window.google} zoom={14}
+        style={{"width":"75%", "height":"75%"}}
         initialCenter={{
           lat: 40.014986,
           lng: -105.270546
@@ -32,6 +32,4 @@ render() {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDv7o5b7hUu-bZhlMlSAjcbYQvMgT08iUQ'
-})(MapContainer)
+export default MapContainer
