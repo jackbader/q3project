@@ -24,9 +24,6 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
   return (
     <div className="home">
 
-      {/* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places&callback=initMap" async defer></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD_rf23mAaAl7HvGt1U6WEHByQb-WVD3M&libraries=places"></script> */}
-
         <div className="homepage-background-container">
           <div className="homepage-img-container">
             <img alt="" className="background-img" src="https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59c18454e3df28dbafd180ad/1505854552351/"></img>

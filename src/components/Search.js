@@ -5,6 +5,8 @@ import './Search.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import JacksDatePicker from './JacksDatePicker'
 import MapContainer from './MapContainer'
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
 
 import {Row} from 'react-materialize'
 
@@ -64,13 +66,8 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
   return (
 
     <div className="container">
-      {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv7o5b7hUu-bZhlMlSAjcbYQvMgT08iUQ&libraries=places"></script> */}
-       <MapContainer />
-    {/* <div className="search">
+    <div className="search">
       <h3 id="membershipsh1">Available Memberships</h3>
-
-         <Container />
-
         <div className="search-bar">
           <div className="search-inputs">
 
@@ -78,6 +75,7 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
               <div className="row">
               <div className="col s12 m4">
                 <h5>Enter City or Address:</h5>
+                {/* <SimpleForm where={search.where}/> */}
               </div>
             <div className="col s12 m8">
               <div className="when">
@@ -90,21 +88,18 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
           </div>
         </div>
 
-      <div className="mappedmembers">
+      {/* <div className="mappedmembers">
         <Row>
           { memberships.map((membership, i) => <Membership dates={dates} key={ membership.id } gyms={gyms} membership={ membership } />) }
         </Row>
+      </div> */}
+      <div className="map-container-class">
+        <MapContainer />
       </div>
-    </div> */}
+    </div>
     </div>
   )
 
 }
 
 export default Search
-
-{/* <SimpleForm where={search.where}/> */}
-
-
-{/* <iframe className="Map" style={{width:600, height:450, frameborder:0, border:0}}
-  src="https://www.google.com/maps/embed/v1/place?q=Boulder%20CO&key=AIzaSyDv7o5b7hUu-bZhlMlSAjcbYQvMgT08iUQ" allowFullScreen></iframe> */}
