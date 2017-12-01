@@ -289,6 +289,17 @@ class App extends Component {
     })
   }
 
+  putLatLongInState = (object) => {
+    this.setState({
+      ...this.state,
+      latAndLong: {
+        lat: object.lat,
+        lng: object.lng
+      }
+    })
+    console.log(this.state.latAndLong.lat)
+  }
+
   updateSearchStateDate = (date) => {
     console.log(date)
     this.setState({
@@ -363,7 +374,7 @@ class App extends Component {
             <Route path="/membership/:id" render= {({match}) => <MembershipPage updateCheckoutDateState={this.updateCheckoutDateState} deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
             <Route path="/checkout/:id" render= {({match}) => <Checkout updateCheckoutDateState={this.updateCheckoutDateState} checkoutDate={this.state.checkoutDate} updateCheckoutDateState={this.updateCheckoutDateState} gyms={this.state.gyms} dates={this.state.dates} memberships={this.state.memberships} match={match} history={history}/>} />
             <Route path="/list" render= {() => <List isLoggedIn={this.state.isLoggedIn} changeModalState={this.changeModalState} selectedDays={this.state.selectedDays} createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
-            <Route path="/search" render= {() => <Search updateSearchStateDate={this.updateSearchStateDate} dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
+            <Route path="/search" render= {() => <Search state={this.state} putLatLongInState={this.putLatLongInState} updateSearchStateDate={this.updateSearchStateDate} dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />
             <HomePage updateSearchState={this.updateSearchState} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser}/>
           </Switch>

@@ -6,6 +6,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import JacksDatePicker from './JacksDatePicker'
 import MapContainer from './MapContainer'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+
 
 
 import {Row} from 'react-materialize'
@@ -14,11 +16,14 @@ import moment from 'moment';
 
 declare var $: any;
 
-const Search = ({modal, createUser, memberships, gyms, search, dates, updateSearchStateDate}) => {
+const Search = ({state, modal, createUser, memberships, gyms, search, dates, updateSearchStateDate, putLatLongInState}) => {
+  // console.log("!!!!!!! " +(state.latAndLong))
   dates = JSON.parse(dates)
-
   let membershipDate;
   let matchedIds = []
+
+  console.log(search.where)
+
 
   if (typeof search.date !== 'undefined') {
 
@@ -57,10 +62,22 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
 
   }
 
-  // console.log(matchedIds)
-  // console.log(membership.id)
   memberships = memberships.filter((membership) => matchedIds.includes(parseInt(membership.id)))
-  console.log(memberships)
+
+  const where = search.where
+
+  // let latLongObject
+  console.log("this is state "+ JSON.stringify(state.latAndLong))
+
+  if(!state.latAndLong) {
+    geocodeByAddress(where)
+    .then(results=> getLatLng(results[0]))
+    .then(( data ) => {
+      console.log("*****"+data.lat, data.lng)
+      putLatLongInState(data)
+    })
+    .catch(error=>console.error(error))
+  }
 
 
   return (
@@ -94,7 +111,7 @@ const Search = ({modal, createUser, memberships, gyms, search, dates, updateSear
         </Row>
       </div> */}
       <div className="map-container-class">
-        <MapContainer />
+        <MapContainer latAndLong={state.latAndLong}/>
       </div>
     </div>
     </div>

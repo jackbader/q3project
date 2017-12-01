@@ -18,6 +18,8 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
     }
     const where = e.target.where_input.value
     updateSearchState(date, where)
+    console.log(where)
+
     history.push('/search')
   }
 

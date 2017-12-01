@@ -32,11 +32,12 @@ class SimpleForm extends React.Component {
       onChange: this.onChange,
       id: "where_input"
     }
-
+console.log(inputProps.value)
     return (
       <div>
 
         <PlacesAutocomplete inputProps={inputProps} />
+
         </div>
     )
   }
