@@ -23,6 +23,7 @@ const Search = ({state, modal, createUser, memberships, gyms, search, dates, upd
   let matchedIds = []
 
   console.log(search.where)
+  console.log("search state "+JSON.stringify(state.latAndLong))
 
 
   if (typeof search.date !== 'undefined') {
@@ -80,6 +81,12 @@ const Search = ({state, modal, createUser, memberships, gyms, search, dates, upd
   }
 console.log(state)
 
+// let geoCode
+
+// if(state.gyms) {
+//
+// }
+console.log(state.latAndLong)
   return (
 
     <div className="container">

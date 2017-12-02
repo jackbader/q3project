@@ -29,11 +29,33 @@ class App extends Component {
           name: 'Welcome to Flex'
         },
         loading: true,
-        search: {}
+        search: {},
+        google: {},
+        initialCenter: {}
     }
+    console.log(this.state)
   }
 
+//   componentDidMount: function () {
+//   this.map = new google.maps.Map(this.mapElement, {
+//     zoom: INITIAL_MAP_ZOOM_LEVEL,
+//     center: {
+//       lat: INITIAL_LOCATION.position.latitude,
+//       lng: INITIAL_LOCATION.position.longitude
+//     }
+//   });
+// },
+
+
   async componentDidMount() {
+    // let google = {this.state.google}
+    // let mapCenter = new google.maps.Map(this.mapElement, {
+    //   initialCenter: {
+    //     lat: this.state.latAndLong.lat,
+    //     lng: this.state.latAndLong.lng
+    //   }
+    // })
+
     const gymsResponse = await fetch(`${process.env.REACT_APP_API_URL}/gyms`)
     const gymsJson = await gymsResponse.json()
 
@@ -79,6 +101,7 @@ class App extends Component {
 
     const datesJson = await datesResponse.json()
 
+
     this.setState({
       ...this.state,
       memberships: membershipsJson,
@@ -89,7 +112,20 @@ class App extends Component {
       dates: JSON.stringify(datesJson)
     })
 
+    // console.log('component did mount '+ JSON.stringify(this.state))
+    // console.log('gyms address!!!! '+JSON.stringify(this.state.gyms[0].address))
+    const gymLoop = this.state.gyms
+    let gymAddresses = []
+
+    for(var i=0; i<gymLoop.length; i++) {
+       let gymAddress = gymLoop[i].address
+        gymAddresses.push(gymAddress)
+    }
+      console.log(gymAddresses)
   }
+
+  ///transform gym addresses into lat & long
+
 
   changeModalState = (string) => {
     this.setState({
@@ -290,6 +326,13 @@ class App extends Component {
     })
   }
 
+  // this.state = {
+  //   showingInfoWindow: false,
+  //   activeMarker: {},
+  //   selectedPlace: {},
+  //   initialCenter: {}
+  // }
+
   putLatLongInState = (object) => {
     this.setState({
       ...this.state,
@@ -300,6 +343,7 @@ class App extends Component {
     })
     // console.log(this.state.latAndLong.lat)
   }
+
 
   updateSearchStateDate = (date) => {
     // console.log(date)

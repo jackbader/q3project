@@ -4,6 +4,9 @@ import './HomePage.css';
 import SimpleForm from '../components/SimpleForm'
 import history from './History'
 import moment from 'moment';
+import { createGeoInput, DefaultGeoInput } from 'react-geoinput';
+
+const SimpleInput = createGeoInput(DefaultGeoInput);
 
 
 const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
@@ -22,6 +25,38 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
 
     history.push('/search')
   }
+
+  // import React, { Component } from 'react';
+  // import { createGeoInput, DefaultGeoInput } from 'react-geoinput';
+  //
+  // const SimpleInput = createGeoInput(DefaultGeoInput);
+  //
+  // class Example extends Component {
+  //   state = {
+  //     address: '',
+  //     geoDestination: '',
+  //   }
+  //
+  //   onAddressChange = value => this.setState({ address: value })
+  //   onGeoDestinationChange = value => this.setState({ geoDestination: value })
+  //
+  //   render() {
+  //     return (
+  //       <div>
+  //         <SimpleInput
+  //           addressInput={{
+  //             onChange: this.onAddressChange,
+  //             value: this.state.address,
+  //           }}
+  //           geoDestinationInput={{
+  //             onChange: this.onGeoDestinationChange,
+  //             value: this.state.geoDestination,
+  //           }}
+  //         />
+  //       </div>
+  //     );
+  //   }
+  // }
 
   return (
     <div className="home">

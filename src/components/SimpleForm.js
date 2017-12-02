@@ -26,6 +26,24 @@ class SimpleForm extends React.Component {
       .catch(error => console.error('Error', error))
   }
 
+//   render() {
+//     return (
+//       <div>
+//         <SimpleInput
+//           addressInput={{
+//             onChange: this.onAddressChange,
+//             value: this.state.address,
+//           }}
+//           geoDestinationInput={{
+//             onChange: this.onGeoDestinationChange,
+//             value: this.state.geoDestination,
+//           }}
+//         />
+//       </div>
+//     );
+//   }
+// }
+
   render() {
     const inputProps = {
       value: this.state.address,
