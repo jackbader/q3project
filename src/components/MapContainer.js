@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Search from './Search'
+import { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 export class MapContainer extends Component {
 
@@ -10,6 +11,24 @@ export class MapContainer extends Component {
   }
 
   render() {
+
+    let geocodedGymAddresses = []
+    console.log(this.props.geocodedGyms)
+    if (!this.props.geocodedGyms) {
+      this.props.gyms.map(gym => {
+        geocodeByAddress(gym.address)
+        .then(results=> getLatLng(results[0]))
+        .then(( data ) => {
+          console.log("gym stuff"+data.lat, data.lng)
+          this.props.putGymLatLongInState(data)
+        })
+        .catch(error=>console.error(error))
+      })
+    } else {
+
+    }
+
+
     if (!this.props.latAndLong) {
       console.log('null')
       return (
@@ -37,6 +56,8 @@ const test = () => {
   return this.props.latAndLong
 }
 
+   console.log(this.props.geocodedGyms)
+
     return (
       <Map
         google={window.google}
@@ -46,9 +67,13 @@ const test = () => {
         zoom={14}
         >
 
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'}
-                position={this.props.latAndLong}/>
+        {!this.props.geocodedGyms ? null : this.props.geocodedGyms.map(gym =>
+          <Marker onClick={this.onMarkerClick}
+                  name={'hi'}
+                  position={gym}/>
+        )}
+
+
 
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>

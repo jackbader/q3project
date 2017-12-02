@@ -16,9 +16,9 @@ import moment from 'moment';
 
 declare var $: any;
 
-const Search = ({state, modal, createUser, memberships, gyms, search, dates, updateSearchStateDate, putLatLongInState}) => {
-  // console.log("!!!!!!! " +(state.latAndLong))
-  dates = JSON.parse(dates)
+const Search = ({putGymLatLongInState, state, modal, createUser, memberships, gyms, search, dates, updateSearchStateDate, putLatLongInState, gymAddresses}) => {
+console.log(gymAddresses)
+dates = JSON.parse(dates)
   let membershipDate;
   let matchedIds = []
 
@@ -118,7 +118,7 @@ console.log(state.latAndLong)
         </Row>
       </div> */}
       <div className="map-container-class">
-        <MapContainer latAndLong={state.latAndLong} />
+        <MapContainer putGymLatLongInState={putGymLatLongInState} latAndLong={state.latAndLong} gyms={state.gyms} geocodedGyms={state.geocodedGyms}/>
       </div>
     </div>
     </div>

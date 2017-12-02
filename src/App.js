@@ -30,8 +30,7 @@ class App extends Component {
         },
         loading: true,
         search: {},
-        google: {},
-        initialCenter: {}
+        google: {}
     }
     console.log(this.state)
   }
@@ -344,6 +343,23 @@ class App extends Component {
     // console.log(this.state.latAndLong.lat)
   }
 
+  putGymLatLongInState = (address) => {
+    console.log('hi')
+    let oldGeocodedGyms = []
+    if(this.state.geocodedGyms) {
+      if (this.state.geocodedGyms.length === 3) {
+        return null
+      }
+      oldGeocodedGyms = this.state.geocodedGyms.splice(0)
+    }
+    console.log(oldGeocodedGyms)
+    oldGeocodedGyms.push(address)
+    this.setState({
+      ...this.state,
+      geocodedGyms: oldGeocodedGyms
+    })
+  }
+
 
   updateSearchStateDate = (date) => {
     // console.log(date)
@@ -420,7 +436,7 @@ class App extends Component {
             <Route path="/membership/:id" render= {({match}) => <MembershipPage updateCheckoutDateState={this.updateCheckoutDateState} deleteMembership={this.deleteMembership} match={match} gyms={this.state.gyms} memberships={this.state.memberships}/>} />
             <Route path="/checkout/:id" render= {({match}) => <Checkout updateCheckoutDateState={this.updateCheckoutDateState} checkoutDate={this.state.checkoutDate} updateCheckoutDateState={this.updateCheckoutDateState} gyms={this.state.gyms} dates={this.state.dates} memberships={this.state.memberships} match={match} history={history}/>} />
             <Route path="/list" render= {() => <List isLoggedIn={this.state.isLoggedIn} changeModalState={this.changeModalState} selectedDays={this.state.selectedDays} createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
-            <Route path="/search" render= {() => <Search state={this.state} putLatLongInState={this.putLatLongInState} updateSearchStateDate={this.updateSearchStateDate} dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
+            <Route path="/search" render= {() => <Search putGymLatLongInState={this.putGymLatLongInState} gymAddresses={this.gymAddresses} state={this.state} putLatLongInState={this.putLatLongInState} updateSearchStateDate={this.updateSearchStateDate} dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />
             <HomePage updateSearchState={this.updateSearchState} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser}/>
           </Switch>
