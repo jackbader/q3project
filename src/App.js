@@ -11,6 +11,7 @@ import Search from './components/Search'
 import Header from './components/Header'
 import MembershipPage from './components/MembershipPage'
 import ProfilePage from './components/ProfilePage'
+import MapContainer from './components/MapContainer'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
 declare var $: any;
@@ -138,7 +139,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    console.log(response)
+    // console.log(response)
     if (response.status !== 400) {
       const userInfo = await response.json()
       localStorage.setItem("user", JSON.stringify(userInfo));
@@ -223,7 +224,7 @@ class App extends Component {
     if (typeof this.state.selectedDays === 'undefined') {
       return 'selected days is undefined'
     }
-    console.log(data)
+    // console.log(data)
     let response = await fetch(`${process.env.REACT_APP_API_URL}/memberships`, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -233,14 +234,14 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    console.log(response)
+    // console.log(response)
     const newMembership = await response.json()
     const items = this.state.memberships
     const clone = [
       ...items,
       newMembership,
     ]
-    console.log(clone)
+    // console.log(clone)
     this.setState({
       ...this.state,
       memberships: clone
@@ -297,11 +298,11 @@ class App extends Component {
         lng: object.lng
       }
     })
-    console.log(this.state.latAndLong.lat)
+    // console.log(this.state.latAndLong.lat)
   }
 
   updateSearchStateDate = (date) => {
-    console.log(date)
+    // console.log(date)
     this.setState({
       ...this.state,
       search: {
@@ -356,7 +357,8 @@ class App extends Component {
   render() {
     // console.log("memberships from app.js "+JSON.stringify(this.state.memberships))
     // console.log("gyms from app.js "+JSON.stringify(this.state.gyms))
-
+    console.log(this.state.latAndLong)
+    console.log(this.putLatLongInState)
     const { loading } = this.state;
 
     if(loading) { // if your app get render immediately, remove this block

@@ -78,7 +78,7 @@ const Search = ({state, modal, createUser, memberships, gyms, search, dates, upd
     })
     .catch(error=>console.error(error))
   }
-
+console.log(state)
 
   return (
 
@@ -111,7 +111,7 @@ const Search = ({state, modal, createUser, memberships, gyms, search, dates, upd
         </Row>
       </div> */}
       <div className="map-container-class">
-        <MapContainer latAndLong={state.latAndLong}/>
+        <MapContainer latAndLong={state.latAndLong} />
       </div>
     </div>
     </div>
