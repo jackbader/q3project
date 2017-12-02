@@ -12,8 +12,6 @@ export class MapContainer extends Component {
 
   render() {
 
-    let geocodedGymAddresses = []
-    console.log(this.props.geocodedGyms)
     if (!this.props.geocodedGyms) {
       this.props.gyms.map(gym => {
         geocodeByAddress(gym.address)
@@ -72,8 +70,6 @@ const test = () => {
                   name={'hi'}
                   position={gym}/>
         )}
-
-
 
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>

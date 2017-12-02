@@ -344,7 +344,6 @@ class App extends Component {
   }
 
   putGymLatLongInState = (address) => {
-    console.log('hi')
     let oldGeocodedGyms = []
     if(this.state.geocodedGyms) {
       if (this.state.geocodedGyms.length === 3) {
