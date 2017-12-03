@@ -118,7 +118,7 @@ console.log(state.latAndLong)
         </Row>
       </div> */}
       <div className="map-container-class">
-        <MapContainer putGymLatLongInState={putGymLatLongInState} latAndLong={state.latAndLong} gyms={state.gyms} geocodedGyms={state.geocodedGyms}/>
+        <MapContainer putGymLatLongInState={putGymLatLongInState} latAndLong={state.latAndLong} gyms={state.gyms} geocodedGyms={state.geocodedGyms} memberships={state.memberships}/>
       </div>
     </div>
     </div>

@@ -7,10 +7,45 @@ export class MapContainer extends Component {
 
   constructor(props) {
     super(props)
-    console.log(this.props)
+    console.log(this.props.memberships)
+    this.state = {
+          showingInfoWindow: false,
+          activeMarker: {},
+          selectedPlace: {}
+        }
+  }
+
+  onMarkerClick = (props, marker, e) => {
+    // console.log("click "+JSON.stringify(props))
+    console.log(props)
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  }
+
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  }
+
+  membershipHtml = () => {
+    console.log('hi')
+    return (
+      <ul style={{'z-index': '10', 'bottom': '0', 'position': 'absolute'}}>
+        {this.props.memberships.map((membership, i) => this.state.selectedPlace.id === membership.gym_id ? <li>{'i like chz'}</li> : <div></div>) }
+      </ul>
+    )
   }
 
   render() {
+
+    console.log(this.props.memberships)
 
     if (!this.props.geocodedGyms) {
       this.props.gyms.map(gym => {
@@ -57,6 +92,7 @@ const test = () => {
    console.log(this.props.geocodedGyms)
 
     return (
+    <div>
       <Map
         google={window.google}
         initialCenter=
@@ -65,18 +101,32 @@ const test = () => {
         zoom={14}
         >
 
-        {!this.props.geocodedGyms ? null : this.props.geocodedGyms.map(gym =>
+        {!this.props.geocodedGyms ? null : this.props.geocodedGyms.map((gym, i) =>
           <Marker onClick={this.onMarkerClick}
-                  name={'hi'}
-                  position={gym}/>
+                  position={gym}
+                  name={this.props.gyms[i].name}
+                  address={this.props.gyms[i].address}
+                  image={this.props.gyms[i].image}
+                  id={this.props.gyms[i].id}
+                />
         )}
 
-        <InfoWindow onClose={this.onInfoWindowClose}>
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onInfoWindowClose}>
             <div>
-              {/* <h1>{this.state.selectedPlace.name}</h1> */}
+              <h5>{this.state.selectedPlace.name}</h5>
+              <h5>{this.state.selectedPlace.address}</h5>
+              <img width="40%" src= {this.state.selectedPlace.image}></img>
+
             </div>
         </InfoWindow>
       </Map>
+      {console.log(this.state.selectedPlace.id)}
+      {this.state.selectedPlace.length === 0  ? <div></div> : this.membershipHtml() }
+
+    </div>
     );
   }
 }
