@@ -12,6 +12,7 @@ import Header from './components/Header'
 import MembershipPage from './components/MembershipPage'
 import ProfilePage from './components/ProfilePage'
 import MapContainer from './components/MapContainer'
+import SimpleForm from './components/SimpleForm'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
 declare var $: any;
@@ -30,30 +31,15 @@ class App extends Component {
         },
         loading: true,
         search: {},
-        google: {}
+        google: {},
+        currentLocation: {}
     }
     console.log(this.state)
   }
 
-//   componentDidMount: function () {
-//   this.map = new google.maps.Map(this.mapElement, {
-//     zoom: INITIAL_MAP_ZOOM_LEVEL,
-//     center: {
-//       lat: INITIAL_LOCATION.position.latitude,
-//       lng: INITIAL_LOCATION.position.longitude
-//     }
-//   });
-// },
-
-
   async componentDidMount() {
-    // let google = {this.state.google}
-    // let mapCenter = new google.maps.Map(this.mapElement, {
-    //   initialCenter: {
-    //     lat: this.state.latAndLong.lat,
-    //     lng: this.state.latAndLong.lng
-    //   }
-    // })
+
+    this.getCurrentLocation()
 
     const gymsResponse = await fetch(`${process.env.REACT_APP_API_URL}/gyms`)
     const gymsJson = await gymsResponse.json()
@@ -123,8 +109,23 @@ class App extends Component {
       console.log(gymAddresses)
   }
 
-  ///transform gym addresses into lat & long
+  geo_success = (position) => {
+    this.updateLocationState(position.coords.latitude, position.coords.longitude)
+  }
 
+  getCurrentLocation = async () => {
+    navigator.geolocation.getCurrentPosition(this.geo_success)
+  }
+
+  updateLocationState = (latitude, longitude) => {
+    this.setState({
+      ...this.state,
+      currentLocation: {
+        lat: latitude,
+        lng: longitude
+      }
+    })
+  }
 
   changeModalState = (string) => {
     this.setState({
@@ -414,10 +415,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log("memberships from app.js "+JSON.stringify(this.state.memberships))
-    // console.log("gyms from app.js "+JSON.stringify(this.state.gyms))
-    console.log(this.state.latAndLong)
-    console.log(this.putLatLongInState)
+    console.log(this.state.currentLocation)
     const { loading } = this.state;
 
     if(loading) { // if your app get render immediately, remove this block
@@ -425,7 +423,6 @@ class App extends Component {
     }
 
     return (
-
       <div>
 
         <Header users={this.state.users} hitFacebookRoute={this.hitFacebookRoute} logoutUser={this.logoutUser} isLoggedIn={this.isLoggedIn} state={this.state} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} userLogin={this.userLogin}/>
@@ -437,7 +434,7 @@ class App extends Component {
             <Route path="/list" render= {() => <List isLoggedIn={this.state.isLoggedIn} changeModalState={this.changeModalState} selectedDays={this.state.selectedDays} createNewMembership={this.createNewMembership} gyms={this.state.gyms} sendNewMembership={this.sendNewMembership} sendGym={this.sendGym} modal={this.state.modal} sendSelectedDays={this.sendSelectedDays}/>} />
             <Route path="/search" render= {() => <Search putGymLatLongInState={this.putGymLatLongInState} gymAddresses={this.gymAddresses} state={this.state} putLatLongInState={this.putLatLongInState} updateSearchStateDate={this.updateSearchStateDate} dates={this.state.dates} search={this.state.search} gyms={this.state.gyms} memberships={this.state.memberships} modal={this.state.modal} />} />
             <Route path="/:id" render= {() => <ErrorPage modal={this.state.modal}/>} />
-            <HomePage updateSearchState={this.updateSearchState} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser}/>
+            <HomePage updateSearchState={this.updateSearchState} modal={this.state.modal} changeModalState={this.changeModalState} createUser={this.createUser} currentLocation={this.state.currentLocation}/>
           </Switch>
         </Router>
 

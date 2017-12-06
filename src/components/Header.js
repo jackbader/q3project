@@ -2,6 +2,10 @@ import React from 'react'
 import {Navbar, NavItem, Modal} from 'react-materialize'
 import './Header.css';
 import history from './History'
+import {Route, Router, Switch } from 'react-router-dom'
+import HomePage from './HomePage'
+import { GeolocatedProps, geolocated } from 'react-geolocated';
+
 // import $ from 'jquery';
 declare var $: any;
 
@@ -242,8 +246,20 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
 
         {typeof localStorage.user !== 'undefined' ? <NavItem onClick={goToProfilePage}>Profile</NavItem> : null}
 
+        {/* <Router history={history}>
+          <Route render={(props) => {
+            console.log("Look at this "+JSON.stringify(props.location))
+          }} />
+
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+          </Switch>
+        </Router> */}
 
       </Navbar>
+
+
+
 
    </div>
 

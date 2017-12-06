@@ -14,7 +14,7 @@ const Membership = ({membership, gyms, dates}) => {
   return (
 
     // <Col m={2} s={2}>
-    <li>
+    <li style={{'marginRight': '10px'}}>
     		<Card onClick={returnLink} className='blue-grey darken-1' textClassName='white-text' header={<CardTitle image={imageUrl}></CardTitle>}
         title={gym[0].name}>
     		</Card>

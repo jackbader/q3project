@@ -4,14 +4,17 @@ import './HomePage.css';
 import SimpleForm from '../components/SimpleForm'
 import history from './History'
 import moment from 'moment';
-import { createGeoInput, DefaultGeoInput } from 'react-geoinput';
+import {geolocated} from 'react-geolocated';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
-const SimpleInput = createGeoInput(DefaultGeoInput);
 
 
-const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
 
-  // var autocomplete = new google.maps.places.Autocomplete(input);
+
+const Index = ({modal, changeModalState, createUser, updateSearchState, currentLocation}) => {
+
+
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+this.state+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
   const submitSearch = (e) => {
     e.preventDefault()
@@ -21,8 +24,6 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
     }
     const where = e.target.where_input.value
     updateSearchState(date, where)
-    console.log(where)
-
     history.push('/search')
   }
 
@@ -57,8 +58,8 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
   //     );
   //   }
   // }
-
   return (
+
     <div className="home">
 
         <div className="homepage-background-container">
@@ -135,4 +136,6 @@ const Index = ({modal, changeModalState, createUser, updateSearchState}) => {
 }
 
 
-export default Index
+// export default Index
+
+export default Index;

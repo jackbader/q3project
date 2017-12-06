@@ -1,8 +1,6 @@
 import React from 'react'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import './SimpleForm.css';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-
 
 class SimpleForm extends React.Component {
   constructor(props) {
@@ -45,12 +43,15 @@ class SimpleForm extends React.Component {
 // }
 
   render() {
+    console.log("******* "+JSON.stringify(this.props))
     const inputProps = {
       value: this.state.address,
       onChange: this.onChange,
       id: "where_input"
     }
-console.log(inputProps.value)
+    // let options = {
+    //   currentLocation = {}
+    // }
     return (
       <div>
 

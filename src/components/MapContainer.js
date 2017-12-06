@@ -2,12 +2,18 @@ import React, {Component} from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Search from './Search'
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import Membership from './Membership'
+import {Row, Col, Card, CardTitle, Nav} from 'react-materialize'
+
+
+
+
 
 export class MapContainer extends Component {
 
+
   constructor(props) {
     super(props)
-    console.log(this.props.memberships)
     this.state = {
           showingInfoWindow: false,
           activeMarker: {},
@@ -16,8 +22,6 @@ export class MapContainer extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
-    // console.log("click "+JSON.stringify(props))
-    console.log(props)
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -35,17 +39,14 @@ export class MapContainer extends Component {
   }
 
   membershipHtml = () => {
-    console.log('hi')
     return (
-      <ul style={{'z-index': '10', 'bottom': '0', 'position': 'absolute'}}>
-        {this.props.memberships.map((membership, i) => this.state.selectedPlace.id === membership.gym_id ? <li>{'i like chz'}</li> : <div></div>) }
+      <ul style={{'z-index': '10', 'marginTop': '600px', 'position': 'absolute', 'listStyleType': 'none', 'display': 'inline-flex'}}>
+        {this.props.memberships.map((membership, i) => this.state.selectedPlace.id === membership.gym_id ? <Membership dates={this.props.dates} key={ membership.id } gyms={this.props.gyms} membership={ membership } /> : <div></div>) }
       </ul>
     )
   }
 
   render() {
-
-    console.log(this.props.memberships)
 
     if (!this.props.geocodedGyms) {
       this.props.gyms.map(gym => {
@@ -63,21 +64,17 @@ export class MapContainer extends Component {
 
 
     if (!this.props.latAndLong) {
-      console.log('null')
       return (
         <div></div>
       )
     }
     let latitude
     let longitude
-    console.log(this.props.latAndLong)
     let coordinants = this.props.latAndLong
     let newArr = []
     for(var i in coordinants) {
-      console.log(coordinants[i])
       newArr.push(coordinants[i])
     }
-    console.log(newArr)
 
     let jacksInitialCenter = {
       lat: newArr[0],
@@ -85,20 +82,19 @@ export class MapContainer extends Component {
     }
 
 const test = () => {
-  console.log(this.props.latAndLong)
   return this.props.latAndLong
 }
 
-   console.log(this.props.geocodedGyms)
-
     return (
+
     <div>
+
       <Map
         google={window.google}
         initialCenter=
         {jacksInitialCenter}
-        style={{"width":"75%", "height":"75%"}}
-        zoom={14}
+        style={{"width":"800px", "height":"500px"}}
+        zoom={12}
         >
 
         {!this.props.geocodedGyms ? null : this.props.geocodedGyms.map((gym, i) =>
@@ -123,7 +119,6 @@ const test = () => {
             </div>
         </InfoWindow>
       </Map>
-      {console.log(this.state.selectedPlace.id)}
       {this.state.selectedPlace.length === 0  ? <div></div> : this.membershipHtml() }
 
     </div>

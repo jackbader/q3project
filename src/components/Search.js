@@ -17,14 +17,9 @@ import moment from 'moment';
 declare var $: any;
 
 const Search = ({putGymLatLongInState, state, modal, createUser, memberships, gyms, search, dates, updateSearchStateDate, putLatLongInState, gymAddresses}) => {
-console.log(gymAddresses)
 dates = JSON.parse(dates)
   let membershipDate;
   let matchedIds = []
-
-  console.log(search.where)
-  console.log("search state "+JSON.stringify(state.latAndLong))
-
 
   if (typeof search.date !== 'undefined') {
 
@@ -35,8 +30,6 @@ dates = JSON.parse(dates)
 
       const fullMembershipDate = moment.utc(membershipDate).format('YYYY-MM-DD')
       const fullNewSearchDate = moment(search.date).format('YYYY-MM-DD');
-
-      // console.log(fullMembershipDate, fullNewSearchDate, fullMembershipDate === fullNewSearchDate);
 
       if (fullMembershipDate === fullNewSearchDate) {
         console.log('membership date matches search date')
@@ -68,7 +61,6 @@ dates = JSON.parse(dates)
   const where = search.where
 
   // let latLongObject
-  console.log("this is state "+ JSON.stringify(state.latAndLong))
 
   if(!state.latAndLong) {
     geocodeByAddress(where)
@@ -79,14 +71,12 @@ dates = JSON.parse(dates)
     })
     .catch(error=>console.error(error))
   }
-console.log(state)
 
 // let geoCode
 
 // if(state.gyms) {
 //
 // }
-console.log(state.latAndLong)
   return (
 
     <div className="container">
@@ -118,7 +108,7 @@ console.log(state.latAndLong)
         </Row>
       </div> */}
       <div className="map-container-class">
-        <MapContainer putGymLatLongInState={putGymLatLongInState} latAndLong={state.latAndLong} gyms={state.gyms} geocodedGyms={state.geocodedGyms} memberships={state.memberships}/>
+        <MapContainer putGymLatLongInState={putGymLatLongInState} dates={dates} latAndLong={state.latAndLong} gyms={state.gyms} geocodedGyms={state.geocodedGyms} memberships={state.memberships}/>
       </div>
     </div>
     </div>
