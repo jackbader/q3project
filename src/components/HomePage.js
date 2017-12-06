@@ -14,7 +14,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 const Index = ({modal, changeModalState, createUser, updateSearchState, currentLocation}) => {
 
 
-  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+this.state+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+JSON.stringify(currentLocation)+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
   const submitSearch = (e) => {
     e.preventDefault()
@@ -132,6 +132,7 @@ const Index = ({modal, changeModalState, createUser, updateSearchState, currentL
             <br></br>
           </div>
     </div>
+    
   )
 }
 
