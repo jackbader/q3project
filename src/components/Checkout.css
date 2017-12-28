@@ -1,0 +1,253 @@
+.checkout-container {
+  padding: 50px 0;
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkout-h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-transform: uppercase
+}
+
+.checkout-body {
+  align-items: flex-start;
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.accordian {
+  color: #231f20;
+  font-family: BasisGrotesque, Avenir, Helvetica Neue, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+}
+
+.summary-container {
+  -webkit-box-ordinal-group: 2;
+  order: 1;
+  max-width: 300px;
+  border-radius: 6px;
+  margin-left: 50px;
+  flex: 0 0 auto;
+  -webkit-box-flex: 0;
+  border: 1px solid #E6E6E6;
+}
+
+.accordianSection {
+  border-top: 1px solid #C7C7C7;
+  border-bottom: 1px solid #C7C7C7;
+}
+
+.accordianSectionHeader {
+  -webkit-box-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: flex;
+  font-size: 16px;
+  font-family: BasisGrotesque, Avenir, Helvetica Neue, Helvetica, sans-serif;
+  font-weight: bold;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.accordianSectionHeader-title {
+  padding: 16px 0;
+  margin-right: auto;
+  color: #231F20;
+}
+
+.accordianSectionBody {
+  overflow: hidden;
+  padding-bottom: 16px;
+}
+
+.checkout-container label {
+  display: block;
+  margin-bottom: 3px;
+  font-weight: normal;
+  font-size: 13px;
+  text-transform: none;
+  color: #231f20;
+}
+
+.checkout-container .input-field {
+  margin-top: 0px !important;
+}
+
+.summary-header {
+  padding: 0;
+  margin: 0;
+  border-top: 0;
+}
+
+.summary-gymdetails {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: start;
+  align-items: flex-start;
+  display: flex;
+}
+
+.summary-datedetails {
+  margin: 0 20px;
+  max-width: none;
+  padding: 15px 0;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+
+.summary-imagecontainer {
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  -webkit-box-ordinal-group: 1;
+  order: 0;
+  position: relative;
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+}
+
+.summary-gymimage {
+  position: static;
+  height: 224px;
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  display: block;
+  top: 0;
+  right: 0;
+}
+
+.summary-ownerimage {
+  height: 84px;
+  width: 84px;
+  display: block;
+  border: 2px solid #FFFFFF;
+  border-radius: 80px;
+  margin: -60px auto 0;
+  background-color: #FFFFFF;
+}
+
+.copy-of-accordian {
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.summary-gymnamecontainer {
+  max-width: 85%;
+  margin: 0 20px;
+  overflow: visible;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  width: 200px;
+}
+
+.rent-date {
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+  margin: 0;
+  overflow: hidden;
+  float: left;
+}
+
+.schedule-date {
+  font-size: 16px;
+  font-weight: bold;
+  color: #231F20;
+  float: none;
+}
+
+.summary-gymlocation {
+  margin: 0 20px;
+  border-top: 1px solid #C7C7C7;
+  padding: 15px 0;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+}
+
+.summary-icon-home {
+
+}
+
+.summary-addressContainer {
+  width: 200px;
+}
+
+.summary-addressContainer {
+  padding-top: 2px;
+  margin-bottom: -2px;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+
+.summary-payment {
+  margin: 0 20px;
+  border-top: 1px solid #C7C7C7;
+  padding: 15px 0;
+}
+
+.summary-payment-total {
+  margin-top: 5px;
+  margin-bottom: 13px;
+  padding-bottom: 0;
+  font-size: 13px;
+  padding-top: 15px;
+  border-top: 1px solid #C7C7C7;
+}
+
+.total-span {
+  font-size: 16px;
+  margin: 0;
+  color: #231F20;
+  display: inline-block;
+  flex-shrink: 0;
+  text-align: right;
+  float: right;
+}
+
+.total-p {
+  font-size: 16px;
+  margin: 0;
+  color: #231F20;
+  display: inline-block;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+
+.total-p-container {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.stripe-container {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

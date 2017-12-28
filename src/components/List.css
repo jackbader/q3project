@@ -1,0 +1,191 @@
+.genaslistpage {
+  margin: 0 auto;
+  text-align: center;
+  /*background-image: url("https://static1.squarespace.com/static/5995d96dbf629ab9fc226638/t/59d29e3912abd95b114165e0/1506977910596/Equinox.jpg");*/
+  height: 500px;
+}
+
+.genaslistpage h5 {
+  color: black;
+}
+
+.genaslistpage h3 {
+  margin: 0;
+}
+
+.genaslistpage .list-img-container {
+  overflow: hidden;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 765px;
+}
+
+.genaslistpage .list-background-img {
+  position: absolute;
+  font-size: 0px;
+  left: 0px;
+  top: -37.6px;
+  /*width: 1440px;*/
+  height: 925.2px;
+  position: relative;
+}
+
+.genaslistpage p {
+  color: black !important;
+}
+
+.genaslistpage .input-field label {
+  color: white !important;
+  font-size: 8em;
+  left: 0px;
+  position: relative;
+}
+
+.genas-input {
+  color: black !important;
+  font-size: 8em;
+  /*padding-top: 10%;*/
+  padding-left: 15%;
+}
+
+
+.genaslistpage .page-title-wrapper {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  margin-top: 250px;
+  color: white !important;
+}
+
+.genaslistpage .form-container {
+  width: 400px;
+  margin: auto;
+}
+
+.genaslistpage .select-wrapper input.select-dropdown {
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+.genaslistpage .select-wrapper span.caret {
+  color: white;
+}
+
+.genaslistpage .row {
+  margin-bottom: 0px;
+}
+
+.genaslistpage .center-absolute {
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  top: 0;
+  margin-top: 160px;
+}
+
+/*.genaslistpage .input-field label {
+  color: black !important;
+  font-size: 8em
+}*/
+
+.genaslistpage form {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.genaslistpage .DayPicker-Day--today {
+  color: white;
+}
+
+.genaslistpage .send-button-div {
+  padding-bottom: 20px
+}
+
+.genaslistpage h1 {
+  color: white;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.selectgym {
+  color: black !important;
+  font-size: 8em;
+  padding-top: 20px;
+}
+.genaslistpage .DayPicker-Day {
+  /*color: black !important;*/
+}
+
+.genaslistpage .DayPicker-Weekday {
+  color: white;
+}
+
+.genaslistpage p {
+  color: white !important;
+  text-align: center;
+  font-size: 20px;
+}
+
+.genaslistpage .dropdown-content li>span {
+  color: black !important;
+}
+
+.genaslistpage abbr[title] {
+  text-decoration: none;
+  border: none;
+}
+
+.genaslistpage .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside)  {
+  background-color: #ff0047;
+}
+
+.genaslistpage .input-field label:not(.label-icon).active {
+  font-size: 1.5em
+}
+
+.genaslistpage .DayPicker {
+  color: white;
+}
+
+.almost-centered {
+  padding-left: 3.75%;
+}
+
+.genaslistpage .row .col {
+  float: none;
+}
+
+.genaslistpage .toast {
+  float: none;
+  top: auto;
+  background-color: white;
+  color: black;
+}
+
+.center-me {
+  padding-left: 39%;
+}
+
+/*#button-padding {
+  padding-left: 50%;
+
+}*/
+
+#submitlist {
+  display: center;
+  background-color: white;
+  color: black;
+}
+.genaslistpage .center {
+  margin: 0 auto;
+}
+
+
+
+/*.DayPicker-Caption {
+  color: black !important;
+  display: inline;
+}*/

@@ -1,0 +1,80 @@
+.search .where_label {
+  font-size: 1rem;
+}
+
+.search .input-field.col label {
+  z-index: -1;
+  margin-top: -30px;
+}
+
+.search .input-field label:not(.label-icon).active {
+  font-size: 1rem;
+  top: 2.3rem;
+}
+
+.search #PlacesAutocomplete__root {
+  z-index: 1;
+}
+
+.search #input_0 {
+  margin-left: 10px;
+}
+.search .date-picker {
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.search #where_input {
+  padding: 0 !important;
+}
+
+.search .card:hover {
+  cursor: pointer;
+}
+
+.search ul {
+  margin: 0 auto;
+  text-align: left;
+}
+
+.search li {
+  padding-right: 20px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.container .search .card{
+  background-color: white !important;
+  width: 200px;
+  color:white !important;
+}
+
+.search #membershipsh1 {
+ text-align: center;
+ font-family: sans-serif;
+ /*font-size: 65px !important;*/
+ font-style: normal;
+ font-weight: 500;
+ letter-spacing: 0.039604em;
+}
+
+.search .left {
+  float:left;
+}
+
+.search .row {
+  padding-left: 10%
+}
+
+.search .when {
+  text-align: left;
+  padding-left: 50%;
+}
+
+.search .where {
+  text-align: left;
+}
+
+.search .mappedmembers {
+  text-align: center;
+}
