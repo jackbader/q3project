@@ -73,7 +73,7 @@ const Header = ({users, logoutUser, isLoggedIn, state, modal, changeModalState, 
       <div>
         <div className="button-container">
 
-          <a href="https://assorted-yard-backend.herokuapp.com/auth/facebook" id="facebook-btn" ><img alt="" className="facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1000px-F_icon_reversed.svg.png"></img>Sign up with Facebook</a>
+          <a href="https://assorted-yard-backend2.herokuapp.com/auth/facebook" id="facebook-btn" ><img alt="" className="facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1000px-F_icon_reversed.svg.png"></img>Sign up with Facebook</a>
           <a id="google-btn" ><img alt="" className="google-logo" src="https://cdn.worldvectorlogo.com/logos/google-icon.svg"></img>Sign up with Google</a>
 
         </div>
